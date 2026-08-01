@@ -20,7 +20,7 @@ window.APP_CONFIG = {
 
   // --- Крипто-донат (USDT, сеть TRON / TRC-20) ---
   // ВАЖНО: вставь СВОЙ реальный адрес кошелька TRC-20. Пока пусто — в окне будет «адрес скоро».
-  USDT_TRC20_ADDRESS: "",   // напр. "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  USDT_TRC20_ADDRESS: "TQNXKETiztp1qepNACLDhiRmggB3fT78oD",
 
   // --- Оплата картой (Stripe Payment Links по суммам, евро) ---
   // Сделай в Stripe отдельный Payment Link на каждую сумму и вставь сюда.
