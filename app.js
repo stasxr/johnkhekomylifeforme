@@ -320,9 +320,7 @@
   /* профиль-меню действия */
   $("miAccount").addEventListener("click", openAccount);
   levelBadge.addEventListener("click", openAccount);
-  $("miSupport").addEventListener("click", function () {
-    location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Поддержка — doxoxo.com");
-  });
+  $("miSupport").addEventListener("click", function () { openDonate(); });
   $("miIdea").addEventListener("click", function () {
     location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Идея для проекта «Я могу всё»");
   });
