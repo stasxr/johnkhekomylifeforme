@@ -462,7 +462,10 @@
       var link = (CFG.STRIPE_LINKS && CFG.STRIPE_LINKS[amount]) || "";
       if (link) {
         $("donateStatus").textContent = t("donate.thanks");
-        setTimeout(function () { window.open(link, "_blank", "noopener"); }, 700);
+        // открываем СИНХРОННО (в момент клика), иначе браузер блокирует вкладку
+        var w = window.open(link, "_blank");
+        if (w) { try { w.opener = null; } catch (e) {} }
+        else { location.href = link; } // если попап заблокирован — переходим в этой же вкладке
       } else {
         $("donateStatus").textContent = t("donate.soon");
       }
