@@ -3,40 +3,175 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Политика конфиденциальности — Я могу всё</title>
 <style>
-  body{margin:0;background:#F3F0F7;color:#211C2E;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
-  @media(prefers-color-scheme:dark){body{background:#100E19;color:#ECE7F5}}
-  .wrap{max-width:720px;margin:0 auto;padding:48px 22px 90px}
-  a{color:#A9791F}
-  h1{font-family:"Palatino Linotype",Georgia,serif;font-size:34px;margin:0 0 8px}
-  h2{font-size:20px;margin:32px 0 8px}
-  p,li{color:#6B6482}
-  @media(prefers-color-scheme:dark){p,li{color:#A199B8}}
-  .note{background:rgba(169,121,31,.1);border:1px solid #C79A3C;border-radius:12px;padding:14px 18px;font-size:14px}
-  .back{display:inline-block;margin-bottom:24px;text-decoration:none;font-size:14px}
+  :root{--ground:#F3F0F7;--surface:#FFF;--ink:#211C2E;--muted:#6B6482;--hair:#E4DEEE;--gold:#A9791F}
+  @media(prefers-color-scheme:dark){:root{--ground:#100E19;--surface:#1A1728;--ink:#ECE7F5;--muted:#A199B8;--hair:#2B2740;--gold:#E4AC52}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:44px 22px 100px}
+  a{color:var(--gold)}
+  .back{display:inline-block;margin-bottom:26px;text-decoration:none;font-size:14px;color:var(--muted)}
+  h1{font-family:"Palatino Linotype",Georgia,serif;font-size:clamp(30px,6vw,40px);margin:0 0 6px;letter-spacing:-.01em}
+  .updated{color:var(--muted);font-size:14px;margin:0 0 22px}
+  h2{font-size:20px;margin:34px 0 8px}
+  p,li{color:var(--muted)}
+  ul{padding-left:20px}
+  li{margin:5px 0}
+  .lead{font-size:17px}
+  .card{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:18px 22px;margin:18px 0}
+  .lang-switch{margin:0 0 30px;font-size:14px}
+  .lang-switch a{cursor:pointer;text-decoration:none;padding:4px 10px;border:1px solid var(--hair);border-radius:999px;margin-right:6px;color:var(--muted)}
+  .lang-switch a.on{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+  section[data-lang]{display:none}
+  section[data-lang].show{display:block}
+  .contact{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:16px 20px;margin-top:26px;font-size:15px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="index.html">← На главную</a>
-  <h1>Политика конфиденциальности</h1>
-  <p class="note">⚠️ Это заготовка-черновик. Перед публичным запуском (и особенно перед приёмом платежей) замените текст на реальную политику, проверенную юристом, и укажите данные владельца сайта.</p>
+  <a class="back" href="index.html">← doxoxo.com</a>
 
-  <h2>1. Какие данные мы собираем</h2>
-  <p>При регистрации мы сохраняем ваш адрес электронной почты и зашифрованный пароль. Мы также храним ваш прогресс прохождения аффирмаций, привязанный к вашему аккаунту.</p>
+  <div class="lang-switch">
+    <a data-go="ru" class="on">Русский</a><a data-go="en">English</a>
+  </div>
 
-  <h2>2. Как мы используем данные</h2>
-  <p>Данные используются исключительно для работы сервиса: входа в аккаунт и синхронизации вашего прогресса между устройствами. Мы не продаём и не передаём ваши данные третьим лицам.</p>
+  <!-- ============================ РУССКИЙ ============================ -->
+  <section data-lang="ru" class="show">
+    <h1>Политика конфиденциальности</h1>
+    <p class="updated">Действует с 1 августа 2026 года</p>
 
-  <h2>3. Хранение данных</h2>
-  <p>Данные хранятся на серверах сервиса Supabase. Пароли не хранятся в открытом виде.</p>
+    <p class="lead">Мы уважаем вашу приватность. Этот документ объясняет простым языком, какие данные собирает сайт <b>doxoxo.com</b> («Сайт»), зачем и как мы их защищаем.</p>
 
-  <h2>4. Ваши права</h2>
-  <p>Вы можете в любой момент запросить удаление своего аккаунта и всех связанных данных, написав нам на почту владельца сайта.</p>
+    <div class="card">Коротко: мы храним только вашу почту, зашифрованный пароль и ваш прогресс практики. Мы не продаём данные, не показываем рекламу и не следим за вами по другим сайтам.</div>
 
-  <h2>5. Контакты</h2>
-  <p>По вопросам конфиденциальности: <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a> (замените на реальный адрес).</p>
+    <h2>1. Кто обрабатывает данные</h2>
+    <p>Оператором Сайта является его владелец. Связаться можно по адресу <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a>. <i>(Владельцу: укажите здесь при запуске имя/название и юридические реквизиты.)</i></p>
+
+    <h2>2. Какие данные мы собираем</h2>
+    <ul>
+      <li><b>Адрес электронной почты</b> — который вы указываете при регистрации.</li>
+      <li><b>Пароль</b> — хранится только в зашифрованном (хешированном) виде; мы не видим ваш настоящий пароль.</li>
+      <li><b>Прогресс практики</b> — отметки прочитанных аффирмаций, уровень и серия дней.</li>
+      <li><b>Технические данные</b> — IP-адрес и базовые журналы сервера, которые автоматически обрабатывают наши поставщики инфраструктуры для защиты и работы Сайта.</li>
+    </ul>
+    <p>Мы не собираем платёжные данные. Мы не запрашиваем имя, телефон, адрес или иную лишнюю информацию.</p>
+
+    <h2>3. Зачем мы используем данные</h2>
+    <ul>
+      <li>Чтобы вы могли войти в аккаунт (аутентификация).</li>
+      <li>Чтобы сохранять и синхронизировать ваш прогресс между устройствами.</li>
+      <li>Чтобы обеспечивать безопасность и стабильную работу Сайта.</li>
+    </ul>
+    <p>Правовое основание — исполнение услуги, которую вы запросили, и ваше согласие, данное при регистрации.</p>
+
+    <h2>4. Где хранятся данные (поставщики услуг)</h2>
+    <p>Мы используем надёжных подрядчиков, которые обрабатывают данные по нашему поручению:</p>
+    <ul>
+      <li><b>Supabase</b> — аутентификация и база данных (хранение почты, хеша пароля, прогресса).</li>
+      <li><b>Cloudflare</b> — доставка и защита Сайта (кэш, фильтрация вредоносного трафика).</li>
+      <li><b>GitHub Pages</b> — хостинг статических файлов Сайта.</li>
+    </ul>
+    <p>Данные могут обрабатываться на серверах за пределами вашей страны. Мы выбираем поставщиков, обеспечивающих надлежащий уровень защиты.</p>
+
+    <h2>5. Файлы cookie и локальное хранилище</h2>
+    <p>Сайт использует технологическое локальное хранилище браузера (localStorage) и токен сессии, чтобы запомнить выбранный язык, тему и держать вас в системе. Мы <b>не</b> используем рекламные и следящие cookie.</p>
+
+    <h2>6. Передача третьим лицам</h2>
+    <p>Мы не продаём и не передаём ваши данные третьим лицам, кроме поставщиков услуг из раздела 4 и случаев, когда этого прямо требует закон.</p>
+
+    <h2>7. Сколько мы храним данные</h2>
+    <p>Данные аккаунта хранятся, пока существует ваш аккаунт. После удаления аккаунта связанные данные удаляются в разумный срок.</p>
+
+    <h2>8. Ваши права</h2>
+    <p>Вы вправе запросить доступ к своим данным, их исправление или удаление, а также отозвать согласие. Для этого напишите на <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a>, и мы поможем.</p>
+
+    <h2>9. Безопасность</h2>
+    <p>Пароли хранятся в хешированном виде, доступ к данным ограничен построчными политиками базы (каждый пользователь видит только свои записи), соединение защищено по HTTPS. Абсолютной безопасности в интернете не существует, но мы применяем разумные меры защиты.</p>
+
+    <h2>10. Дети</h2>
+    <p>Сайт не предназначен для лиц младше 16 лет. Если вам меньше 16 — пожалуйста, не регистрируйтесь без согласия родителей.</p>
+
+    <h2>11. Изменения политики</h2>
+    <p>Мы можем обновлять эту политику. Актуальная версия всегда доступна на этой странице; дату вступления в силу мы указываем сверху.</p>
+
+    <div class="contact">Вопросы по конфиденциальности: <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a></div>
+  </section>
+
+  <!-- ============================ ENGLISH ============================ -->
+  <section data-lang="en">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Effective 1 August 2026</p>
+
+    <p class="lead">We respect your privacy. This document explains, in plain language, what data <b>doxoxo.com</b> (the “Site”) collects, why, and how we protect it.</p>
+
+    <div class="card">In short: we store only your email, an encrypted password and your practice progress. We don't sell data, show ads, or track you across other sites.</div>
+
+    <h2>1. Who processes the data</h2>
+    <p>The Site is operated by its owner. You can reach us at <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a>. <i>(Owner: add your legal name and details here before launch.)</i></p>
+
+    <h2>2. What we collect</h2>
+    <ul>
+      <li><b>Email address</b> — provided when you register.</li>
+      <li><b>Password</b> — stored only in encrypted (hashed) form; we never see your actual password.</li>
+      <li><b>Practice progress</b> — your affirmation marks, level and day streak.</li>
+      <li><b>Technical data</b> — IP address and basic server logs automatically processed by our infrastructure providers to keep the Site secure and running.</li>
+    </ul>
+    <p>We do not collect payment data, and we don't ask for your name, phone, address or any unnecessary information.</p>
+
+    <h2>3. Why we use the data</h2>
+    <ul>
+      <li>To let you sign in to your account (authentication).</li>
+      <li>To save and sync your progress across devices.</li>
+      <li>To keep the Site secure and reliable.</li>
+    </ul>
+    <p>The legal basis is performance of the service you requested and the consent you give at registration.</p>
+
+    <h2>4. Where data is stored (service providers)</h2>
+    <ul>
+      <li><b>Supabase</b> — authentication and database (email, password hash, progress).</li>
+      <li><b>Cloudflare</b> — delivery and protection of the Site.</li>
+      <li><b>GitHub Pages</b> — hosting of the Site's static files.</li>
+    </ul>
+    <p>Data may be processed on servers outside your country. We choose providers that ensure an adequate level of protection.</p>
+
+    <h2>5. Cookies and local storage</h2>
+    <p>The Site uses technical browser local storage and a session token to remember your language, theme and keep you signed in. We do <b>not</b> use advertising or tracking cookies.</p>
+
+    <h2>6. Sharing with third parties</h2>
+    <p>We don't sell or share your data with third parties, except the service providers in section 4 and where required by law.</p>
+
+    <h2>7. Data retention</h2>
+    <p>Account data is kept while your account exists. After you delete your account, related data is removed within a reasonable period.</p>
+
+    <h2>8. Your rights</h2>
+    <p>You may request access to your data, its correction or deletion, and withdraw consent. Just email <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a> and we'll help.</p>
+
+    <h2>9. Security</h2>
+    <p>Passwords are hashed, data access is restricted by row-level policies (each user sees only their own records), and connections are secured with HTTPS. No online service is perfectly secure, but we apply reasonable safeguards.</p>
+
+    <h2>10. Children</h2>
+    <p>The Site is not intended for anyone under 16. If you are under 16, please don't register without parental consent.</p>
+
+    <h2>11. Changes to this policy</h2>
+    <p>We may update this policy. The current version is always available on this page, with the effective date shown at the top.</p>
+
+    <div class="contact">Privacy questions: <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a></div>
+  </section>
 </div>
+
+<script>
+  document.querySelectorAll(".lang-switch a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var go = a.getAttribute("data-go");
+      document.querySelectorAll(".lang-switch a").forEach(function (x) { x.classList.toggle("on", x === a); });
+      document.querySelectorAll("section[data-lang]").forEach(function (s) {
+        s.classList.toggle("show", s.getAttribute("data-lang") === go);
+      });
+      document.documentElement.lang = go;
+    });
+  });
+</script>
 </body>
 </html>
