@@ -8,8 +8,8 @@
 window.APP_CONFIG = {
   // --- Supabase (регистрация по почте + сохранение прогресса в облаке) ---
   // Возьми на https://app.supabase.com → твой проект → Settings → API
-  SUPABASE_URL:      "",   // напр. "https://abcdefgh.supabase.co"
-  SUPABASE_ANON_KEY: "",   // длинный ключ "anon public" (его можно показывать, это норма)
+  SUPABASE_URL:      "https://zwlxbylelrultwqotrtb.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_MGMC-dH59FgsJRXOUmBTGw_3SjPGR-T",   // publishable key (безопасно показывать)
 
   // --- Оплата / поддержка проекта (добавим позже) ---
   // Когда сделаешь Stripe Payment Link — вставь его сюда, и кнопка «Поддержать» заработает.
