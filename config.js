@@ -26,11 +26,11 @@ window.APP_CONFIG = {
   // Сделай в Stripe отдельный Payment Link на каждую сумму и вставь сюда.
   // Пока какая-то ссылка пустая — по этой сумме покажется «скоро».
   STRIPE_LINKS: {
-    "10":  "",
-    "20":  "",
-    "50":  "",
-    "100": "",
-    "500": "",
-    "979": ""
+    "10":  "https://buy.stripe.com/6oUbJ32Ng8Kg2NTa3F8ww00",
+    "20":  "https://buy.stripe.com/dRmcN7cnQd0w7497Vx8ww01",
+    "50":  "https://buy.stripe.com/9B65kF9bE6C82NT3Fh8ww02",
+    "100": "https://buy.stripe.com/3cI28t4Vo4u02NT1x98ww04",
+    "500": "https://buy.stripe.com/fZubJ39bE7GcfAF4Jl8ww03",
+    "979": "https://buy.stripe.com/aFabJ39bE8Kg2NTgs38ww05"
   }
 };
