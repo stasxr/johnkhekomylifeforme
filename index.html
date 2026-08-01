@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Я могу всё — ежедневная практика подсознания по книге Джона Кехо. Аффирмации, визуализация, программа на каждый день.">
+<title>Я могу всё — практика подсознания</title>
+<style>
+  :root{
+    --ground:#F3F0F7; --surface:#FFFFFF; --surface-2:#FBFAFE;
+    --ink:#211C2E; --muted:#6B6482; --hair:#E4DEEE;
+    --gold:#A9791F; --gold-soft:#C79A3C; --violet:#6B5B95; --violet-soft:#8A7BB8;
+    --glow:rgba(169,121,31,.16);
+    --shadow:0 1px 2px rgba(33,28,46,.05), 0 12px 32px -18px rgba(33,28,46,.35);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --maxw:760px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#100E19; --surface:#1A1728; --surface-2:#211D33;
+      --ink:#ECE7F5; --muted:#A199B8; --hair:#2B2740;
+      --gold:#E4AC52; --gold-soft:#F0C271; --violet:#8878C0; --violet-soft:#A497D6;
+      --glow:rgba(228,172,82,.22);
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 24px 60px -30px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="light"]{
+    --ground:#F3F0F7; --surface:#FFFFFF; --surface-2:#FBFAFE;
+    --ink:#211C2E; --muted:#6B6482; --hair:#E4DEEE;
+    --gold:#A9791F; --gold-soft:#C79A3C; --violet:#6B5B95; --violet-soft:#8A7BB8;
+    --glow:rgba(169,121,31,.16);
+    --shadow:0 1px 2px rgba(33,28,46,.05), 0 12px 32px -18px rgba(33,28,46,.35);
+  }
+  :root[data-theme="dark"]{
+    --ground:#100E19; --surface:#1A1728; --surface-2:#211D33;
+    --ink:#ECE7F5; --muted:#A199B8; --hair:#2B2740;
+    --gold:#E4AC52; --gold-soft:#F0C271; --violet:#8878C0; --violet-soft:#A497D6;
+    --glow:rgba(228,172,82,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 24px 60px -30px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:radial-gradient(120% 60% at 50% -10%, var(--glow), transparent 60%), var(--ground);
+    color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  .page{padding:0 22px 96px}
+  .wrap{max-width:var(--maxw); margin:0 auto}
+
+  /* ---- top bar ---- */
+  .topbar{
+    max-width:940px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:18px 0 6px;
+  }
+  .brand{font-family:var(--serif); font-weight:600; font-size:17px; letter-spacing:-.01em; color:var(--ink); text-decoration:none}
+  .brand em{font-style:italic; color:var(--gold)}
+  .topbar-actions{display:flex; align-items:center; gap:8px}
+  .btn{
+    appearance:none; cursor:pointer; font-family:var(--sans); font-size:13.5px;
+    border:1px solid var(--hair); background:var(--surface); color:var(--ink);
+    padding:9px 15px; border-radius:999px; transition:all .18s; line-height:1;
+    display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--violet-soft)}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+  .btn.primary{background:var(--ink); color:var(--ground); border-color:var(--ink)}
+  .btn.primary:hover{opacity:.9}
+  .btn.icon{padding:9px 12px; color:var(--muted)}
+  .btn.gold{background:linear-gradient(180deg,var(--gold-soft),var(--gold)); color:#fff; border-color:transparent; font-weight:600}
+  :root[data-theme="dark"] .btn.gold{color:#100E19}
+  @media (prefers-color-scheme:dark){.btn.gold{color:#100E19}}
+  .account-chip{display:none; align-items:center; gap:9px}
+  .account-chip .who{font-size:13px; color:var(--muted); max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+  /* ---- hero ---- */
+  .hero{text-align:center; padding:34px 0 26px; position:relative}
+  .orb-wrap{display:flex; justify-content:center; margin-bottom:28px}
+  .orb{
+    width:132px; height:132px; border-radius:50%; position:relative; display:grid; place-items:center;
+    background:radial-gradient(circle at 50% 42%, var(--gold-soft), var(--violet) 78%);
+    box-shadow:0 0 0 1px var(--hair), 0 0 60px -6px var(--glow); animation:breathe 11s ease-in-out infinite;
+  }
+  .orb::after{content:""; position:absolute; inset:-14px; border-radius:50%; border:1px solid var(--violet-soft); opacity:.5; animation:ring 11s ease-in-out infinite}
+  .orb span{font-family:var(--sans); font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#fff; mix-blend-mode:screen; opacity:.9; animation:breathText 11s ease-in-out infinite}
+  @keyframes breathe{0%,100%{transform:scale(.9)}45%,55%{transform:scale(1.12)}}
+  @keyframes ring{0%,100%{transform:scale(.82); opacity:.25}50%{transform:scale(1.18); opacity:.6}}
+  @keyframes breathText{0%,12%{opacity:0}25%,42%{opacity:.95}55%,72%{opacity:.95}85%,100%{opacity:0}}
+  .eyebrow{font-size:12.5px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin:0 0 16px}
+  h1{font-family:var(--serif); font-weight:600; letter-spacing:-.01em; font-size:clamp(44px,10vw,78px); line-height:1.02; margin:0; text-wrap:balance}
+  h1 em{font-style:italic; color:var(--gold)}
+  .lede{font-family:var(--serif); font-size:clamp(19px,2.6vw,23px); color:var(--muted); max-width:30ch; margin:22px auto 0; text-wrap:balance; font-style:italic}
+
+  section{margin-top:76px}
+  .kicker{font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--violet); margin:0 0 14px; display:flex; align-items:center; gap:12px}
+  .kicker::before{content:""; width:26px; height:1px; background:var(--violet-soft); opacity:.7}
+  h2{font-family:var(--serif); font-weight:600; font-size:clamp(28px,4.6vw,38px); line-height:1.12; margin:0 0 14px; text-wrap:balance; letter-spacing:-.01em}
+  .section-intro{color:var(--muted); margin:0 0 30px; font-size:17px}
+
+  .principles{display:grid; gap:14px}
+  .principle{display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; background:var(--surface); border:1px solid var(--hair); border-radius:16px; padding:22px 24px; box-shadow:var(--shadow)}
+  .principle b{font-family:var(--serif); font-size:15px; font-weight:600; color:var(--gold); border:1px solid var(--gold-soft); border-radius:50%; width:36px; height:36px; display:grid; place-items:center; flex:none}
+  .principle h3{margin:2px 0 4px; font-size:18px; font-family:var(--sans); font-weight:650}
+  .principle p{margin:0; color:var(--muted); font-size:15.5px; line-height:1.6}
+
+  .day{display:grid; gap:16px}
+  .slot{background:var(--surface); border:1px solid var(--hair); border-radius:18px; padding:26px 26px 24px; box-shadow:var(--shadow); position:relative; overflow:hidden}
+  .slot::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(var(--gold-soft),var(--violet))}
+  .slot-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px}
+  .slot-head h3{margin:0; font-family:var(--serif); font-size:22px; font-weight:600}
+  .slot-time{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-variant-numeric:tabular-nums}
+  .slot p{margin:0 0 12px; color:var(--muted); font-size:15.5px}
+  .steps{margin:0; padding:0; list-style:none; display:grid; gap:9px}
+  .steps li{position:relative; padding-left:26px; font-size:15.5px}
+  .steps li::before{content:""; position:absolute; left:2px; top:9px; width:8px; height:8px; border-radius:50%; background:var(--violet-soft)}
+  .quote-line{margin-top:14px; font-family:var(--serif); font-style:italic; font-size:17px; color:var(--ink); padding:12px 16px; background:var(--surface-2); border-radius:10px; border:1px solid var(--hair)}
+
+  /* ---- save-progress banner ---- */
+  .save-banner{
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:space-between;
+    background:linear-gradient(120% 120% at 0 0, var(--glow), transparent 60%), var(--surface);
+    border:1px solid var(--gold-soft); border-radius:16px; padding:18px 22px; margin-bottom:24px;
+  }
+  .save-banner .st{display:flex; align-items:center; gap:14px}
+  .save-banner .ic{font-size:22px}
+  .save-banner b{display:block; font-size:15.5px}
+  .save-banner small{color:var(--muted); font-size:13.5px}
+  .save-banner.hidden{display:none}
+
+  .aff-progress{display:flex; align-items:center; gap:14px; margin-bottom:22px; background:var(--surface); border:1px solid var(--hair); border-radius:14px; padding:14px 18px}
+  .bar{flex:1; height:8px; border-radius:99px; background:var(--hair); overflow:hidden}
+  .bar>i{display:block; height:100%; width:0; border-radius:99px; background:linear-gradient(90deg,var(--gold-soft),var(--gold)); transition:width .45s ease}
+  .aff-progress span{font-size:13.5px; color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap}
+  .cloud-tag{font-size:12px; color:var(--violet); display:none; align-items:center; gap:5px}
+  .tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px}
+  .tab{appearance:none; cursor:pointer; font-family:var(--sans); font-size:14px; border:1px solid var(--hair); background:var(--surface); color:var(--muted); padding:9px 16px; border-radius:999px; transition:all .2s}
+  .tab[aria-selected="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink)}
+  .tab:hover{color:var(--ink)}
+  .tab:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+  .aff-list{display:grid; gap:11px}
+  .aff{display:flex; align-items:flex-start; gap:15px; cursor:pointer; background:var(--surface); border:1px solid var(--hair); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow); transition:border-color .2s, transform .1s; text-align:left; width:100%; font:inherit; color:inherit; appearance:none}
+  .aff:hover{border-color:var(--gold-soft)}
+  .aff:active{transform:scale(.994)}
+  .aff:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+  .aff .mark{flex:none; width:24px; height:24px; border-radius:50%; border:1.5px solid var(--violet-soft); display:grid; place-items:center; margin-top:2px; transition:all .2s}
+  .aff .mark svg{width:13px; height:13px; opacity:0; transform:scale(.5); transition:all .2s}
+  .aff .txt{font-family:var(--serif); font-size:19px; line-height:1.45}
+  .aff[data-done="1"] .mark{background:var(--gold); border-color:var(--gold)}
+  .aff[data-done="1"] .mark svg{opacity:1; transform:scale(1); color:#fff}
+  :root[data-theme="dark"] .aff[data-done="1"] .mark svg{color:#100E19}
+  @media (prefers-color-scheme:dark){.aff[data-done="1"] .mark svg{color:#100E19}}
+  :root[data-theme="light"] .aff[data-done="1"] .mark svg{color:#fff}
+  .aff[data-done="1"] .txt{color:var(--muted)}
+  .reset{margin-top:18px; appearance:none; background:none; border:none; cursor:pointer; color:var(--muted); font-size:13.5px; text-decoration:underline; text-underline-offset:3px; font-family:var(--sans)}
+  .reset:hover{color:var(--gold)}
+
+  .tech{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+  .card{background:var(--surface); border:1px solid var(--hair); border-radius:16px; padding:22px 22px 20px; box-shadow:var(--shadow)}
+  .card .ico{width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:var(--surface-2); border:1px solid var(--hair); margin-bottom:14px; color:var(--gold)}
+  .card h3{margin:0 0 6px; font-size:17.5px; font-weight:650}
+  .card p{margin:0; color:var(--muted); font-size:15px; line-height:1.58}
+
+  /* ---- support section ---- */
+  .support{margin-top:80px; text-align:center; padding:48px 28px; border:1px solid var(--gold-soft); border-radius:22px; background:radial-gradient(120% 120% at 50% 0%, var(--glow), transparent 55%), var(--surface)}
+  .support h2{margin:0 auto 10px}
+  .support p{color:var(--muted); max-width:46ch; margin:0 auto 24px}
+  .support .btn{font-size:15px; padding:13px 26px}
+
+  .closing{margin-top:44px; text-align:center; padding:52px 28px; border:1px solid var(--hair); border-radius:22px; background:radial-gradient(120% 120% at 50% 0%, var(--glow), transparent 55%), var(--surface)}
+  .closing p{font-family:var(--serif); font-size:clamp(22px,3.4vw,30px); font-style:italic; margin:0 auto; max-width:22ch; line-height:1.3; text-wrap:balance}
+  .closing small{display:block; margin-top:22px; color:var(--muted); font-size:13px; letter-spacing:.16em; text-transform:uppercase; font-style:normal}
+
+  footer{max-width:var(--maxw); margin:56px auto 0; text-align:center; color:var(--muted); font-size:13px; line-height:1.9}
+  footer a{color:var(--muted)}
+
+  /* ---- modal ---- */
+  .modal-back{position:fixed; inset:0; background:rgba(16,14,25,.55); backdrop-filter:blur(3px); display:none; align-items:center; justify-content:center; padding:20px; z-index:50}
+  .modal-back.open{display:flex}
+  .modal{width:100%; max-width:420px; background:var(--surface); border:1px solid var(--hair); border-radius:20px; box-shadow:var(--shadow); padding:30px 28px 26px; position:relative}
+  .modal h3{font-family:var(--serif); font-size:26px; font-weight:600; margin:0 0 6px; text-align:center}
+  .modal .sub{color:var(--muted); font-size:14.5px; text-align:center; margin:0 0 22px; text-wrap:balance}
+  .modal label{display:block; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0 0 6px}
+  .modal .field{margin-bottom:16px}
+  .modal input{width:100%; font:inherit; font-size:16px; padding:12px 14px; border-radius:12px; border:1px solid var(--hair); background:var(--surface-2); color:var(--ink)}
+  .modal input:focus{outline:2px solid var(--gold); outline-offset:1px; border-color:transparent}
+  .modal .btn.gold{width:100%; justify-content:center; padding:13px; font-size:15px; margin-top:4px}
+  .modal .switch{text-align:center; margin:18px 0 0; font-size:14px; color:var(--muted)}
+  .modal .switch a{color:var(--gold); cursor:pointer; text-decoration:underline; text-underline-offset:2px}
+  .modal .msg{font-size:13.5px; text-align:center; margin:0 0 14px; padding:10px 12px; border-radius:10px; display:none}
+  .modal .msg.err{display:block; background:rgba(200,60,60,.12); color:#c0392b; border:1px solid rgba(200,60,60,.3)}
+  .modal .msg.ok{display:block; background:rgba(60,160,90,.12); color:#2e8b57; border:1px solid rgba(60,160,90,.3)}
+  :root[data-theme="dark"] .modal .msg.err{color:#ff9a8a}
+  :root[data-theme="dark"] .modal .msg.ok{color:#7ee0a0}
+  @media (prefers-color-scheme:dark){.modal .msg.err{color:#ff9a8a}.modal .msg.ok{color:#7ee0a0}}
+  .modal .close-x{position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; color:var(--muted); cursor:pointer; line-height:1}
+  .modal .support-note{margin-top:18px; padding-top:16px; border-top:1px solid var(--hair); font-size:12.5px; color:var(--muted); text-align:center; text-wrap:balance}
+
+  @media (max-width:620px){
+    .tech{grid-template-columns:1fr}
+    .principle{grid-template-columns:1fr; gap:10px}
+    .principle b{width:32px;height:32px}
+    body{font-size:16px}
+    .brand{font-size:15px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .orb,.orb::after,.orb span{animation:none}
+    .orb span{opacity:.95}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <a href="#" class="brand">Я могу&nbsp;<em>всё</em></a>
+    <div class="topbar-actions">
+      <button class="btn icon" id="tgl" type="button" aria-label="Сменить тему"><span id="tglIco">◐</span></button>
+      <button class="btn" id="loginBtn" type="button">Войти</button>
+      <button class="btn primary" id="registerBtn" type="button">Регистрация</button>
+      <div class="account-chip" id="accountChip">
+        <span class="who" id="whoTxt"></span>
+        <button class="btn" id="logoutBtn" type="button">Выйти</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero wrap">
+    <div class="orb-wrap"><div class="orb"><span>вдох · выдох</span></div></div>
+    <p class="eyebrow">Практика по книге Джона Кехо</p>
+    <h1>Я&nbsp;могу&nbsp;<em>всё</em></h1>
+    <p class="lede">Моё подсознание работает на меня — днём и ночью, без остановки.</p>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <p class="kicker">Как это работает</p>
+      <h2>Четыре закона моего ума</h2>
+      <p class="section-intro">Не заклинания, а принципы. Подсознание не спорит и не оценивает — оно принимает то, что я повторяю с чувством, и начинает выстраивать реальность под это.</p>
+      <div class="principles">
+        <div class="principle"><b>1</b><div><h3>Я становлюсь тем, о чём думаю чаще всего</h3><p>Внимание — это удобрение. Мысль, которой я даю энергию, растёт. Значит, я выбираю, что усиливать.</p></div></div>
+        <div class="principle"><b>2</b><div><h3>Подсознание работает 24 часа в сутки</h3><p>Оно не спит. Пока я живу, ем, засыпаю — оно ищет способы воплотить то, что я в него заложил. Моя задача — дать ему ясный заказ.</p></div></div>
+        <div class="principle"><b>3</b><div><h3>Образ сильнее слов</h3><p>Подсознание мыслит картинками и чувствами. Ярко представленное «уже сбылось» действует вернее, чем сухое пожелание.</p></div></div>
+        <div class="principle"><b>4</b><div><h3>Повторение превращает мысль в убеждение</h3><p>То, что повторяется каждый день, становится правдой для ума. Так рождается новая уверенность — и новые поступки.</p></div></div>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Моя программа</p>
+      <h2>Один день — три касания</h2>
+      <p class="section-intro">Практика Кехо занимает минуты, а не часы. Сила — в постоянстве. Три коротких момента каждый день сильнее одного долгого раз в неделю.</p>
+      <div class="day">
+        <div class="slot">
+          <div class="slot-head"><h3>Утро</h3><span class="slot-time">5 минут · сразу после пробуждения</span></div>
+          <p>Первые минуты после сна — ум ещё в полудрёме, граница с подсознанием открыта. Не хватаюсь за телефон.</p>
+          <ul class="steps"><li>Лежу с закрытыми глазами, делаю три медленных вдоха.</li><li>Проговариваю про себя аффирмации дня — спокойно, с чувством.</li><li>Представляю сегодняшний день таким, каким хочу: лёгким, удачным, своим.</li></ul>
+          <p class="quote-line">«Сегодня — мой день. У меня всё получается. Я могу всё.»</p>
+        </div>
+        <div class="slot">
+          <div class="slot-head"><h3>День</h3><span class="slot-time">мимоходом · семя-мысль</span></div>
+          <p>Выбираю одну мысль-семя на день и возвращаюсь к ней в паузах — в очереди, в транспорте, между делами.</p>
+          <ul class="steps"><li>Держу одну короткую мысль: «Всё складывается в мою пользу».</li><li>Замечаю подтверждения — маленькие удачи, совпадения, помощь.</li><li>Ловлю негативную мысль — мягко разворачиваю её в позитивную.</li></ul>
+          <p class="quote-line">«Я замечаю возможности повсюду. Мир работает на меня.»</p>
+        </div>
+        <div class="slot">
+          <div class="slot-head"><h3>Вечер</h3><span class="slot-time">7–10 минут · перед сном</span></div>
+          <p>Засыпание — второе окно к подсознанию. То, с чем я засыпаю, ум обрабатывает всю ночь.</p>
+          <ul class="steps"><li>Вспоминаю три вещи, за которые благодарен сегодня.</li><li>Включаю «экран ума»: вижу свою цель как уже осуществлённую — в красках, со звуком, с радостью.</li><li>Повторяю аффирмации и засыпаю, удерживая образ и чувство.</li></ul>
+          <p class="quote-line">«Спасибо за этот день. Я двигаюсь к своей цели. Всё уже начинается.»</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Мои аффирмации</p>
+      <h2>Слова, которые я даю подсознанию</h2>
+      <p class="section-intro">Читаю от первого лица, в настоящем времени, будто это уже так. Отмечаю прочитанные — и меняю раздел кнопками ниже.</p>
+
+      <div class="save-banner" id="saveBanner">
+        <div class="st"><span class="ic">💾</span><div><b>Хотите сохранять прогресс на всех устройствах?</b><small>Зарегистрируйтесь бесплатно и поддержите проект — растём вместе с вами.</small></div></div>
+        <button class="btn gold" id="bannerRegister" type="button">Регистрация</button>
+      </div>
+
+      <div class="aff-progress">
+        <div class="bar"><i id="barFill"></i></div>
+        <span id="progTxt">0 из 0 прочитано</span>
+        <span class="cloud-tag" id="cloudTag">☁ синхронизировано</span>
+      </div>
+
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="aff-list" id="affList"></div>
+      <button class="reset" id="resetBtn" type="button">Сбросить отметки</button>
+    </section>
+
+    <section>
+      <p class="kicker">Инструменты Кехо</p>
+      <h2>Пять техник под рукой</h2>
+      <p class="section-intro">Короткая шпаргалка — что именно делать, когда есть минута и желание поработать с умом.</p>
+      <div class="tech">
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Визуализация</h3><p>Закрываю глаза и проживаю желаемое как фильм от первого лица: вижу, слышу, чувствую. Чем ярче образ и радость — тем сильнее заказ.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg></div><h3>Экран ума</h3><p>Представляю перед собой светлый экран и проецирую на него картину цели — как уже сбывшуюся. Смотрю на неё спокойно, будто пересматриваю приятное воспоминание.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v9M12 21a6 6 0 0 0 6-6c0-3-6-9-6-9S6 12 6 15a6 6 0 0 0 6 6Z"/></svg></div><h3>Семя-мысль</h3><p>Беру одну короткую идею и «сею» её — возвращаюсь к ней десятки раз за день. Капля точит камень: мысль прорастает в убеждение.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6C19 16.5 12 21 12 21Z"/></svg></div><h3>Благодарность</h3><p>Каждый вечер называю то, за что благодарен. Благодарность настраивает ум на изобилие — и он начинает искать ещё больше поводов.</p></div>
+        <div class="card" style="grid-column:1/-1"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a6 6 0 0 0-4 10.5c.7.6 1 1.2 1 2V17h6v-1.5c0-.8.3-1.4 1-2A6 6 0 0 0 12 3ZM9 21h6"/></svg></div><h3>Работа на грани сна</h3><p>Самое восприимчивое состояние ума — за минуту до засыпания и в первые секунды после пробуждения. Именно тогда аффирмации и образы входят глубже всего. Я использую оба окна каждый день.</p></div>
+      </div>
+    </section>
+
+    <section class="support" id="support">
+      <p class="kicker" style="justify-content:center">Поддержка проекта</p>
+      <h2>Растём вместе с вами</h2>
+      <p>Этот проект живёт благодаря тем, кто им пользуется. Регистрация и сохранение прогресса — бесплатны. Если практика приносит вам пользу, вы можете поддержать развитие проекта.</p>
+      <button class="btn gold" id="supportBtn" type="button">Поддержать проект</button>
+    </section>
+
+    <div class="closing">
+      <p>«Разум — это всё. Ты становишься тем, о чём думаешь.»</p>
+      <small>Я могу всё · и моё подсознание уже знает, как</small>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>© <span id="year"></span> doxoxo.com · Практика по мотивам книги Джона Кехо «Подсознание может всё»</div>
+    <div><a href="privacy.html">Политика конфиденциальности</a> · <a href="terms.html">Условия использования</a></div>
+  </footer>
+</div>
+
+<!-- ===== модальное окно входа / регистрации ===== -->
+<div class="modal-back" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal">
+    <button class="close-x" id="authClose" type="button" aria-label="Закрыть">×</button>
+    <h3 id="authTitle">Регистрация</h3>
+    <p class="sub" id="authSub">Создайте аккаунт, чтобы прогресс сохранялся на всех устройствах.</p>
+    <div class="msg" id="authMsg"></div>
+    <form id="authForm">
+      <div class="field">
+        <label for="email">Почта</label>
+        <input type="email" id="email" autocomplete="email" required placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="password">Пароль</label>
+        <input type="password" id="password" autocomplete="current-password" required minlength="6" placeholder="минимум 6 символов">
+      </div>
+      <button class="btn gold" type="submit" id="authSubmit">Зарегистрироваться</button>
+    </form>
+    <p class="switch" id="authSwitch">Уже есть аккаунт? <a id="switchLink">Войти</a></p>
+    <p class="support-note">Регистрируясь, вы поддерживаете развитие проекта. Мы бережно храним ваши данные и не передаём их третьим лицам.</p>
+  </div>
+</div>
+
+<!-- Supabase SDK (загружается только если указаны ключи в config.js) -->
+<script src="config.js"></script>
+<script>
+  if (window.APP_CONFIG && window.APP_CONFIG.SUPABASE_URL) {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+    s.onload = function(){ window.__supabaseReady = true; document.dispatchEvent(new Event('supabase-ready')); };
+    document.head.appendChild(s);
+  }
+</script>
+<script src="app.js"></script>
+</body>
+</html>
