@@ -11,7 +11,23 @@ window.APP_CONFIG = {
   SUPABASE_URL:      "https://zwlxbylelrultwqotrtb.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_MGMC-dH59FgsJRXOUmBTGw_3SjPGR-T",   // publishable key (безопасно показывать)
 
-  // --- Оплата / поддержка проекта (добавим позже) ---
-  // Когда сделаешь Stripe Payment Link — вставь его сюда, и кнопка «Поддержать» заработает.
-  STRIPE_PAYMENT_LINK: ""  // напр. "https://buy.stripe.com/xxxxxxxx"
+  // --- Telegram-бот (кнопка «Написать» в полоске про ассистента) ---
+  // Ссылка на твой бот/канал, напр. "https://t.me/tvoy_bot". Пусто — откроется письмо на почту.
+  TELEGRAM_LINK: "",
+
+  // --- Крипто-донат (USDT, сеть TRON / TRC-20) ---
+  // ВАЖНО: вставь СВОЙ реальный адрес кошелька TRC-20. Пока пусто — в окне будет «адрес скоро».
+  USDT_TRC20_ADDRESS: "",   // напр. "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+  // --- Оплата картой (Stripe Payment Links по суммам, евро) ---
+  // Сделай в Stripe отдельный Payment Link на каждую сумму и вставь сюда.
+  // Пока какая-то ссылка пустая — по этой сумме покажется «скоро».
+  STRIPE_LINKS: {
+    "10":  "",
+    "20":  "",
+    "50":  "",
+    "100": "",
+    "500": "",
+    "979": ""
+  }
 };

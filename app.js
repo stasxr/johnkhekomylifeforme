@@ -409,10 +409,63 @@
     return t("err.generic", { msg: m });
   }
 
-  /* ---------------- Кнопка поддержки ---------------- */
-  $("supportBtn").addEventListener("click", function () {
-    if (CFG.STRIPE_PAYMENT_LINK) window.open(CFG.STRIPE_PAYMENT_LINK, "_blank", "noopener");
-    else alert(t("support.alert"));
+  /* ---------------- Поддержать проект (донат) ---------------- */
+  var donateModal = $("donateModal");
+  var EMOJI = {
+    "10":  ["🙂", "☕", "🌱"],
+    "20":  ["😊", "✨", "🌿"],
+    "50":  ["😍", "🔥", "💫"],
+    "100": ["🤩", "💎", "⭐"],
+    "500": ["🚀", "👑", "🌟"],
+    "979": ["🏆", "🎉", "🥳", "💖"]
+  };
+  function openDonate() {
+    var addr = CFG.USDT_TRC20_ADDRESS || "";
+    if (addr) { $("usdtAddr").textContent = addr; $("usdtCopy").style.display = ""; }
+    else { $("usdtAddr").textContent = t("donate.noAddress"); $("usdtCopy").style.display = "none"; }
+    $("donateStatus").textContent = "";
+    Array.prototype.forEach.call($("amountGrid").children, function (b) { b.classList.remove("chosen"); });
+    openModal(donateModal);
+  }
+  $("supportBtn").addEventListener("click", openDonate);
+  $("donClose").addEventListener("click", function () { closeModal(donateModal); });
+
+  $("usdtCopy").addEventListener("click", function () {
+    var addr = CFG.USDT_TRC20_ADDRESS || "";
+    if (!addr) return;
+    var done = function () { $("usdtCopy").textContent = t("donate.copied"); setTimeout(function () { $("usdtCopy").textContent = t("donate.copy"); }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(done, done);
+    else { try { var ta = document.createElement("textarea"); ta.value = addr; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); done(); } catch (e) {} }
+  });
+
+  function emojiBurst(amount) {
+    var set = EMOJI[amount] || ["✨"], layer = $("emojiLayer");
+    for (var i = 0; i < 12; i++) {
+      var s = document.createElement("span");
+      s.className = "emoji-fly";
+      s.textContent = set[Math.floor(Math.random() * set.length)];
+      s.style.left = (8 + Math.random() * 84) + "%";
+      s.style.setProperty("--r", (Math.random() * 120 - 60).toFixed(0) + "deg");
+      s.style.animationDelay = (Math.random() * 0.35).toFixed(2) + "s";
+      s.style.fontSize = (20 + Math.random() * 16).toFixed(0) + "px";
+      layer.appendChild(s);
+      (function (el) { setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 2000); })(s);
+    }
+  }
+  Array.prototype.forEach.call($("amountGrid").children, function (btn) {
+    btn.addEventListener("click", function () {
+      var amount = btn.getAttribute("data-amount");
+      Array.prototype.forEach.call($("amountGrid").children, function (b) { b.classList.remove("chosen"); });
+      btn.classList.add("chosen");
+      emojiBurst(amount);
+      var link = (CFG.STRIPE_LINKS && CFG.STRIPE_LINKS[amount]) || "";
+      if (link) {
+        $("donateStatus").textContent = t("donate.thanks");
+        setTimeout(function () { window.open(link, "_blank", "noopener"); }, 700);
+      } else {
+        $("donateStatus").textContent = t("donate.soon");
+      }
+    });
   });
 
   /* ---------------- Полоска бота ---------------- */
@@ -421,7 +474,8 @@
     try { if (localStorage.getItem(LS_BOT) === "1") strip.classList.add("hidden"); } catch (e) {}
     $("botStripCta").addEventListener("click", function (e) {
       e.preventDefault();
-      location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Персональный бот-ассистент «Я могу всё»");
+      if (CFG.TELEGRAM_LINK) window.open(CFG.TELEGRAM_LINK, "_blank", "noopener");
+      else location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Персональный Telegram-бот «Я могу всё»");
     });
     $("botStripClose").addEventListener("click", function () {
       strip.classList.add("hidden");

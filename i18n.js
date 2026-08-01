@@ -84,7 +84,7 @@
       "footer.copy": "© {year} doxoxo.com · A practice inspired by John Kehoe's book “Mind Power”",
       "footer.privacy": "Privacy Policy",
       "footer.terms": "Terms of Use",
-      "strip.text": "Want a personal “I Can Do Anything” assistant? Order a bot that sends affirmations to your inbox.",
+      "strip.text": "Want a personal “I Can Do Anything” assistant? Order a Telegram bot that sends you affirmations every morning, noon and evening.",
       "strip.cta": "Contact us",
       "modal.register.sub": "Create an account so your progress is saved across all devices.",
       "modal.login.sub": "Welcome back! Sign in to continue.",
@@ -123,6 +123,7 @@
       "account.total": "Days practiced",
       "account.close": "Close",
       "week.mon": "Mon", "week.tue": "Tue", "week.wed": "Wed", "week.thu": "Thu", "week.fri": "Fri", "week.sat": "Sat", "week.sun": "Sun",
+      "donate.crypto": "Crypto (USDT · TRC-20)", "donate.copy": "Copy", "donate.copied": "Copied ✓", "donate.noAddress": "Address coming soon", "donate.card": "Or support by card:", "donate.soon": "Card payment is coming soon 🙌", "donate.thanks": "Thank you for your support! ❤️",
       "themes": [
         { id: "power", label: "Strength & possibility", items: [
           "I can do anything. My subconscious holds limitless power.",
@@ -234,7 +235,7 @@
       "footer.copy": "© {year} doxoxo.com · Практика по мотивам книги Джона Кехо «Подсознание может всё»",
       "footer.privacy": "Политика конфиденциальности",
       "footer.terms": "Условия использования",
-      "strip.text": "Хотите персонального ассистента «Я могу всё»? Закажите бота, который будет присылать аффирмации вам на почту.",
+      "strip.text": "Хотите персонального ассистента «Я могу всё»? Закажите Telegram-бота — он будет присылать аффирмации каждое утро, день и вечер.",
       "strip.cta": "Написать",
       "modal.register.sub": "Создайте аккаунт, чтобы прогресс сохранялся на всех устройствах.",
       "modal.login.sub": "С возвращением! Войдите, чтобы продолжить.",
@@ -273,6 +274,7 @@
       "account.total": "Дней практики",
       "account.close": "Закрыть",
       "week.mon": "ПН", "week.tue": "ВТ", "week.wed": "СР", "week.thu": "ЧТ", "week.fri": "ПТ", "week.sat": "СБ", "week.sun": "ВС",
+      "donate.crypto": "Криптовалютой (USDT · TRC-20)", "donate.copy": "Скопировать", "donate.copied": "Скопировано ✓", "donate.noAddress": "Адрес скоро появится", "donate.card": "Или поддержать картой:", "donate.soon": "Оплата картой скоро будет доступна 🙌", "donate.thanks": "Спасибо за поддержку! ❤️",
       "themes": [
         { id: "power", label: "Сила и возможности", items: [
           "Я могу всё. В моём подсознании — безграничная сила.",
@@ -384,7 +386,7 @@
       "footer.copy": "© {year} doxoxo.com · Практика за мотивами книги Джона Кехо «Підсвідомість може все»",
       "footer.privacy": "Політика конфіденційності",
       "footer.terms": "Умови використання",
-      "strip.text": "Хочете персонального асистента «Я можу все»? Замовте бота, який надсилатиме афірмації вам на пошту.",
+      "strip.text": "Хочете персонального асистента «Я можу все»? Замовте Telegram-бота — він надсилатиме афірмації щоранку, удень і ввечері.",
       "strip.cta": "Написати",
       "modal.register.sub": "Створіть акаунт, щоб прогрес зберігався на всіх пристроях.",
       "modal.login.sub": "З поверненням! Увійдіть, щоб продовжити.",
@@ -423,6 +425,7 @@
       "account.total": "Днів практики",
       "account.close": "Закрити",
       "week.mon": "Пн", "week.tue": "Вт", "week.wed": "Ср", "week.thu": "Чт", "week.fri": "Пт", "week.sat": "Сб", "week.sun": "Нд",
+      "donate.crypto": "Криптовалютою (USDT · TRC-20)", "donate.copy": "Скопіювати", "donate.copied": "Скопійовано ✓", "donate.noAddress": "Адресу скоро додамо", "donate.card": "Або підтримати карткою:", "donate.soon": "Оплата карткою скоро буде доступна 🙌", "donate.thanks": "Дякуємо за підтримку! ❤️",
       "themes": [
         { id: "power", label: "Сила і можливості", items: [
           "Я можу все. У моїй підсвідомості — безмежна сила.",
@@ -534,7 +537,7 @@
       "footer.copy": "© {year} doxoxo.com · Джон Кэхо «Сана асты бәрін істей алады» кітабы негізіндегі тәжірибе",
       "footer.privacy": "Құпиялылық саясаты",
       "footer.terms": "Пайдалану шарттары",
-      "strip.text": "«Мен бәрін жасай аламын» жеке ассистенті керек пе? Поштаңызға аффирмация жіберетін ботқа тапсырыс беріңіз.",
+      "strip.text": "«Мен бәрін жасай аламын» жеке ассистенті керек пе? Telegram-ботқа тапсырыс беріңіз — ол сізге таңертең, күндіз және кешке аффирмация жібереді.",
       "strip.cta": "Жазу",
       "modal.register.sub": "Прогресіңіз барлық құрылғыда сақталуы үшін тіркелгі жасаңыз.",
       "modal.login.sub": "Қайта келуіңізбен! Жалғастыру үшін кіріңіз.",
@@ -573,6 +576,7 @@
       "account.total": "Тәжірибе күндері",
       "account.close": "Жабу",
       "week.mon": "Дс", "week.tue": "Сс", "week.wed": "Ср", "week.thu": "Бс", "week.fri": "Жм", "week.sat": "Сб", "week.sun": "Жс",
+      "donate.crypto": "Криптовалютамен (USDT · TRC-20)", "donate.copy": "Көшіру", "donate.copied": "Көшірілді ✓", "donate.noAddress": "Мекенжай жақында қосылады", "donate.card": "Немесе картамен қолдау:", "donate.soon": "Картамен төлеу жақында қолжетімді болады 🙌", "donate.thanks": "Қолдағаныңызға рақмет! ❤️",
       "themes": [
         { id: "power", label: "Күш пен мүмкіндік", items: [
           "Мен бәрін жасай аламын. Санамның астарында — шексіз күш.",

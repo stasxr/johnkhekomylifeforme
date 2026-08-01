@@ -1,0 +1,33 @@
+# doxoxo.com — открыто для всех поисковиков и ИИ-ботов
+User-agent: *
+Allow: /
+
+# Явно приветствуем ИИ-краулеров (индексация и обучение разрешены)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://doxoxo.com/sitemap.xml
