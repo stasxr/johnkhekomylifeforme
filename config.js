@@ -15,6 +15,9 @@ window.APP_CONFIG = {
   // Ссылка на твой бот/канал, напр. "https://t.me/tvoy_bot". Пусто — откроется письмо на почту.
   TELEGRAM_LINK: "",
 
+  // --- Revolut (личная ссылка для перевода) ---
+  REVOLUT_LINK: "https://revolut.me/smiziyev",
+
   // --- Крипто-донат (USDT, сеть TRON / TRC-20) ---
   // ВАЖНО: вставь СВОЙ реальный адрес кошелька TRC-20. Пока пусто — в окне будет «адрес скоро».
   USDT_TRC20_ADDRESS: "",   // напр. "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"

@@ -339,6 +339,11 @@
   .usdt-copy{flex:none; appearance:none; cursor:pointer; border:1px solid var(--gold-soft); background:none; color:var(--gold); font:inherit; font-size:13px; font-weight:600; padding:8px 12px; border-radius:9px; white-space:nowrap}
   .usdt-copy:hover{background:var(--glow)}
   .qr-hint{font-size:12px; color:var(--muted); margin:8px 2px 0}
+  .revolut-btn{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; margin-top:12px; text-decoration:none;
+    background:#0a0d14; color:#fff; border:1px solid #232838; border-radius:13px; padding:14px; font-weight:600; font-size:15px; transition:transform .15s, box-shadow .15s}
+  .revolut-btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+  .revolut-btn .rev-mark{width:24px; height:24px; border-radius:7px; display:grid; place-items:center; font-weight:800; font-size:15px;
+    background:linear-gradient(135deg,#0666eb,#8b5cf6); color:#fff; font-family:Georgia,serif}
   .amount-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px}
   .amount-btn{appearance:none; cursor:pointer; border:1px solid var(--hair); background:var(--surface-2); color:var(--ink); font:inherit; font-weight:700; font-size:16px; padding:16px 6px; border-radius:13px; transition:all .15s; font-variant-numeric:tabular-nums}
   .amount-btn:hover{border-color:var(--gold-soft); color:var(--gold); transform:translateY(-2px)}
@@ -588,6 +593,10 @@
       <code id="usdtAddr">—</code>
       <button class="usdt-copy" id="usdtCopy" type="button" data-i18n="donate.copy">Скопировать</button>
     </div>
+    <a class="revolut-btn" id="revolutBtn" href="#" target="_blank" rel="noopener">
+      <span class="rev-mark">R</span><span data-i18n="donate.revolut">Поддержать через Revolut</span>
+    </a>
+
     <p class="qr-hint" data-i18n="donate.card">Или поддержать картой:</p>
 
     <div class="amount-grid" id="amountGrid">

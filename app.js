@@ -423,6 +423,9 @@
     var addr = CFG.USDT_TRC20_ADDRESS || "";
     if (addr) { $("usdtAddr").textContent = addr; $("usdtCopy").style.display = ""; }
     else { $("usdtAddr").textContent = t("donate.noAddress"); $("usdtCopy").style.display = "none"; }
+    var rev = $("revolutBtn");
+    if (CFG.REVOLUT_LINK) { rev.href = CFG.REVOLUT_LINK; rev.style.display = "flex"; }
+    else rev.style.display = "none";
     $("donateStatus").textContent = "";
     Array.prototype.forEach.call($("amountGrid").children, function (b) { b.classList.remove("chosen"); });
     openModal(donateModal);

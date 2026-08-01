@@ -123,7 +123,7 @@
       "account.total": "Days practiced",
       "account.close": "Close",
       "week.mon": "Mon", "week.tue": "Tue", "week.wed": "Wed", "week.thu": "Thu", "week.fri": "Fri", "week.sat": "Sat", "week.sun": "Sun",
-      "donate.crypto": "Crypto (USDT · TRC-20)", "donate.copy": "Copy", "donate.copied": "Copied ✓", "donate.noAddress": "Address coming soon", "donate.card": "Or support by card:", "donate.soon": "Card payment is coming soon 🙌", "donate.thanks": "Thank you for your support! ❤️",
+      "donate.crypto": "Crypto (USDT · TRC-20)", "donate.copy": "Copy", "donate.copied": "Copied ✓", "donate.noAddress": "Address coming soon", "donate.card": "Or support by card:", "donate.soon": "Card payment is coming soon 🙌", "donate.thanks": "Thank you for your support! ❤️", "donate.revolut": "Support via Revolut",
       "themes": [
         { id: "power", label: "Strength & possibility", items: [
           "I can do anything. My subconscious holds limitless power.",
@@ -274,7 +274,7 @@
       "account.total": "Дней практики",
       "account.close": "Закрыть",
       "week.mon": "ПН", "week.tue": "ВТ", "week.wed": "СР", "week.thu": "ЧТ", "week.fri": "ПТ", "week.sat": "СБ", "week.sun": "ВС",
-      "donate.crypto": "Криптовалютой (USDT · TRC-20)", "donate.copy": "Скопировать", "donate.copied": "Скопировано ✓", "donate.noAddress": "Адрес скоро появится", "donate.card": "Или поддержать картой:", "donate.soon": "Оплата картой скоро будет доступна 🙌", "donate.thanks": "Спасибо за поддержку! ❤️",
+      "donate.crypto": "Криптовалютой (USDT · TRC-20)", "donate.copy": "Скопировать", "donate.copied": "Скопировано ✓", "donate.noAddress": "Адрес скоро появится", "donate.card": "Или поддержать картой:", "donate.soon": "Оплата картой скоро будет доступна 🙌", "donate.thanks": "Спасибо за поддержку! ❤️", "donate.revolut": "Поддержать через Revolut",
       "themes": [
         { id: "power", label: "Сила и возможности", items: [
           "Я могу всё. В моём подсознании — безграничная сила.",
@@ -425,7 +425,7 @@
       "account.total": "Днів практики",
       "account.close": "Закрити",
       "week.mon": "Пн", "week.tue": "Вт", "week.wed": "Ср", "week.thu": "Чт", "week.fri": "Пт", "week.sat": "Сб", "week.sun": "Нд",
-      "donate.crypto": "Криптовалютою (USDT · TRC-20)", "donate.copy": "Скопіювати", "donate.copied": "Скопійовано ✓", "donate.noAddress": "Адресу скоро додамо", "donate.card": "Або підтримати карткою:", "donate.soon": "Оплата карткою скоро буде доступна 🙌", "donate.thanks": "Дякуємо за підтримку! ❤️",
+      "donate.crypto": "Криптовалютою (USDT · TRC-20)", "donate.copy": "Скопіювати", "donate.copied": "Скопійовано ✓", "donate.noAddress": "Адресу скоро додамо", "donate.card": "Або підтримати карткою:", "donate.soon": "Оплата карткою скоро буде доступна 🙌", "donate.thanks": "Дякуємо за підтримку! ❤️", "donate.revolut": "Підтримати через Revolut",
       "themes": [
         { id: "power", label: "Сила і можливості", items: [
           "Я можу все. У моїй підсвідомості — безмежна сила.",
@@ -576,7 +576,7 @@
       "account.total": "Тәжірибе күндері",
       "account.close": "Жабу",
       "week.mon": "Дс", "week.tue": "Сс", "week.wed": "Ср", "week.thu": "Бс", "week.fri": "Жм", "week.sat": "Сб", "week.sun": "Жс",
-      "donate.crypto": "Криптовалютамен (USDT · TRC-20)", "donate.copy": "Көшіру", "donate.copied": "Көшірілді ✓", "donate.noAddress": "Мекенжай жақында қосылады", "donate.card": "Немесе картамен қолдау:", "donate.soon": "Картамен төлеу жақында қолжетімді болады 🙌", "donate.thanks": "Қолдағаныңызға рақмет! ❤️",
+      "donate.crypto": "Криптовалютамен (USDT · TRC-20)", "donate.copy": "Көшіру", "donate.copied": "Көшірілді ✓", "donate.noAddress": "Мекенжай жақында қосылады", "donate.card": "Немесе картамен қолдау:", "donate.soon": "Картамен төлеу жақында қолжетімді болады 🙌", "donate.thanks": "Қолдағаныңызға рақмет! ❤️", "donate.revolut": "Revolut арқылы қолдау",
       "themes": [
         { id: "power", label: "Күш пен мүмкіндік", items: [
           "Мен бәрін жасай аламын. Санамның астарында — шексіз күш.",
