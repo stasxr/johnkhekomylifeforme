@@ -47,6 +47,8 @@
     renderList();
     refreshAuthTexts();
     updateLevelBadge(false);
+    refreshQuotes();
+    updateAutoUI();
   }
 
   function buildLangMenu() {
@@ -91,6 +93,8 @@
   /* ---------------- СОСТОЯНИЕ ---------------- */
   var state = { marks: {}, day: "", level: 0, streak: 0, history: {} };
   var user = null, supabase = null, saveTimer = null;
+  var isSupporter = false;
+  var CONTENT = window.CONTENT || {};
 
   function loadLocal() {
     try { var r = localStorage.getItem(LS_STATE); if (r) return JSON.parse(r); } catch (e) {}
@@ -157,6 +161,8 @@
     if (state.day === td) for (k in state.marks) if (state.marks[k]) marks[k] = true;
     if (cloud.day === td) for (k in (cloud.marks || {})) if (cloud.marks[k]) marks[k] = true;
     state.marks = marks; state.day = td;
+    if (cloud.auto != null) state.auto = cloud.auto;
+    if (cloud.cycle != null) state.cycle = Math.max(state.cycle || 0, cloud.cycle || 0);
     recount();
   }
 
@@ -188,7 +194,12 @@
   function renderList() {
     var theme = getThemes().filter(function (x) { return x.id === active; })[0];
     listEl.innerHTML = "";
-    theme.items.forEach(function (text, i) {
+    var items = theme.items;
+    if (state.auto && isSupporter && items.length) {
+      var off = (state.cycle || 0) % items.length;
+      if (off) items = items.slice(off).concat(items.slice(0, off));
+    }
+    items.forEach(function (text, i) {
       var k = keyOf(theme.id, i);
       var btn = document.createElement("button");
       btn.className = "aff"; btn.type = "button";
@@ -222,9 +233,11 @@
   function awardDay() {
     var td = todayStr();
     state.history[td] = true;
+    if (state.auto && isSupporter) state.cycle = (state.cycle || 0) + 1;
     recount();
     persist();
     updateLevelBadge(true);
+    renderList();
     showLevelUp();
   }
 
@@ -297,12 +310,24 @@
   }
   function onSignedIn(u) {
     user = u; showLoggedIn(u.email || "");
+    loadSupporter();
     cloudLoad().then(function (cloud) {
       mergeCloud(cloud); saveLocal(); cloudSave();
-      renderList(); updateLevelBadge(false);
+      renderList(); updateLevelBadge(false); refreshQuotes(); updateAutoUI();
     });
   }
-  function onSignedOut() { user = null; showLoggedOut(); }
+  function onSignedOut() {
+    user = null; isSupporter = false; showLoggedOut();
+    updateAutoUI(); refreshQuotes(); renderList();
+  }
+  function loadSupporter() {
+    if (!supabase || !user) return;
+    supabase.from("profiles").select("is_supporter").eq("user_id", user.id).maybeSingle()
+      .then(function (r) {
+        isSupporter = !!(r.data && r.data.is_supporter);
+        updateAutoUI(); refreshQuotes(); renderList();
+      }, function () {});
+  }
 
   /* ---------------- Выпадающие меню ---------------- */
   function closeMenus() {
@@ -322,7 +347,7 @@
   levelBadge.addEventListener("click", openAccount);
   $("miSupport").addEventListener("click", function () { openDonate(); });
   $("miIdea").addEventListener("click", function () {
-    location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Идея для проекта «Я могу всё»");
+    copyText(CONTACT_EMAIL); toast(t("idea.copied") + " · " + CONTACT_EMAIL);
   });
   $("miLogout").addEventListener("click", function () { if (supabase) supabase.auth.signOut(); });
 
@@ -460,6 +485,11 @@
       btn.classList.add("chosen");
       emojiBurst(amount);
       var link = (CFG.STRIPE_LINKS && CFG.STRIPE_LINKS[amount]) || "";
+      if (link && user) {
+        link += (link.indexOf("?") < 0 ? "?" : "&") +
+          "client_reference_id=" + encodeURIComponent(user.id) +
+          "&prefilled_email=" + encodeURIComponent(user.email || "");
+      }
       if (link) {
         $("donateStatus").textContent = t("donate.thanks");
         // открываем СИНХРОННО (в момент клика), иначе браузер блокирует вкладку
@@ -486,6 +516,51 @@
       try { localStorage.setItem(LS_BOT, "1"); } catch (e) {}
     });
   })();
+
+  /* ---------------- Тост + буфер обмена ---------------- */
+  var toastEl = $("toast"), toastTimer;
+  function toast(msg) {
+    toastEl.textContent = msg; toastEl.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2800);
+  }
+  function copyText(txt) {
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(txt).catch(function () {}); return; }
+    try { var ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); } catch (e) {}
+  }
+
+  /* ---------------- Ежедневная смена текстов (auto) ---------------- */
+  function dayNumber() { return Math.floor(parseDate(todayStr()).getTime() / 86400000); }
+  function refreshQuotes() {
+    var on = !!state.auto && isSupporter, dn = dayNumber();
+    document.querySelectorAll("[data-quote]").forEach(function (el) {
+      var sec = el.getAttribute("data-quote");
+      var pool = CONTENT[lang] && CONTENT[lang][sec];
+      if (on && pool && pool.length) el.textContent = "«" + pool[dn % pool.length] + "»";
+      else el.textContent = t("day." + sec + ".quote");
+    });
+  }
+  function updateAutoUI() {
+    var on = !!state.auto && isSupporter;
+    document.querySelectorAll("[data-auto]").forEach(function (b) {
+      b.setAttribute("aria-checked", on ? "true" : "false");
+      b.classList.toggle("locked", !isSupporter);
+    });
+  }
+  function onAutoClick() {
+    if (!user) { toast(t("auto.needLogin")); return; }
+    if (!isSupporter) { toast(t("auto.needSupport")); openDonate(); return; }
+    state.auto = !state.auto; persist();
+    updateAutoUI(); refreshQuotes(); renderList();
+  }
+  document.querySelectorAll("[data-auto]").forEach(function (b) { b.addEventListener("click", onAutoClick); });
+  document.querySelectorAll("[data-autoinfo]").forEach(function (b) { b.addEventListener("click", function () { openModal($("infoModal")); }); });
+  $("infoClose").addEventListener("click", function () { closeModal($("infoModal")); });
+  $("infoOk").addEventListener("click", function () { closeModal($("infoModal")); });
+
+  /* ---------------- Установка на телефон ---------------- */
+  $("installBtn").addEventListener("click", function () { openModal($("installModal")); });
+  $("installClose").addEventListener("click", function () { closeModal($("installModal")); });
+  $("installOk").addEventListener("click", function () { closeModal($("installModal")); });
 
   /* ---------------- СТАРТ ---------------- */
   state = loadLocal();

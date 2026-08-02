@@ -11,6 +11,14 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#100E19">
 <meta name="author" content="doxoxo.com">
+<!-- Иконки / установка на телефон (PWA) -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Я могу всё">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Я могу всё">
@@ -356,6 +364,35 @@
   .emoji-fly{position:absolute; bottom:40px; font-size:26px; animation:emojiUp 1.5s ease-out forwards}
   @keyframes emojiUp{0%{transform:translateY(0) scale(.6); opacity:0}15%{opacity:1}100%{transform:translateY(-260px) scale(1.2) rotate(var(--r,0deg)); opacity:0}}
 
+  /* auto toggle (ежедневная смена текстов) */
+  .auto-ctl{display:inline-flex; align-items:center; gap:9px; margin-bottom:12px}
+  .auto-tgl{position:relative; width:44px; height:26px; border-radius:999px; border:none; cursor:pointer; background:var(--hair); padding:0; transition:background .2s; flex:none}
+  .auto-tgl .knob{position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.3); transition:transform .2s}
+  .auto-tgl[aria-checked="true"]{background:linear-gradient(180deg,var(--gold-soft),var(--gold))}
+  .auto-tgl[aria-checked="true"] .knob{transform:translateX(18px)}
+  .auto-tgl.locked{opacity:.5}
+  .auto-tgl:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+  .auto-lbl{font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .auto-info{background:none; border:1px solid var(--hair); cursor:pointer; color:var(--violet); font-size:12px; font-weight:700; width:20px; height:20px; border-radius:50%; display:inline-grid; place-items:center; padding:0; font-family:Georgia,serif}
+  .auto-info:hover{color:var(--gold); border-color:var(--gold-soft)}
+
+  /* toast */
+  .toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:var(--ground); padding:12px 20px; border-radius:12px; font-size:14px; box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:all .25s; z-index:80; max-width:90vw; text-align:center}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+  /* footer app / telegram */
+  .footer-apps{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; flex-wrap:wrap}
+  .fa-btn{display:inline-flex; align-items:center; gap:7px; padding:8px 15px; border:1px solid var(--hair); border-radius:999px; background:var(--surface); color:var(--ink); font-size:13px; cursor:pointer; text-decoration:none; transition:border-color .2s}
+  .fa-btn:hover{border-color:var(--violet-soft)}
+  .fa-btn svg{width:16px; height:16px}
+
+  /* steps list (install modal) */
+  .steps-block{margin:16px 0 4px}
+  .steps-block h4{margin:0 0 8px; font-size:14px; color:var(--gold)}
+  .step-list{margin:0; padding-left:22px; color:var(--muted); font-size:14.5px; line-height:1.5}
+  .step-list li{margin:6px 0}
+  .modal .info-body{color:var(--muted); font-size:15px; line-height:1.6; text-align:left; margin:0 0 8px}
+
   @media (max-width:620px){
     .tech{grid-template-columns:1fr}
     .principle{grid-template-columns:1fr; gap:10px}
@@ -450,19 +487,34 @@
           <div class="slot-head"><h3 data-i18n="day.morning.title">Утро</h3><span class="slot-time" data-i18n="day.morning.time">5 минут · сразу после пробуждения</span></div>
           <p data-i18n="day.morning.desc">Первые минуты после сна — ум ещё в полудрёме, граница с подсознанием открыта. Не хватаюсь за телефон.</p>
           <ul class="steps"><li data-i18n="day.morning.s1">Лежу с закрытыми глазами, делаю три медленных вдоха.</li><li data-i18n="day.morning.s2">Проговариваю про себя аффирмации дня — спокойно, с чувством.</li><li data-i18n="day.morning.s3">Представляю сегодняшний день таким, каким хочу: лёгким, удачным, своим.</li></ul>
-          <p class="quote-line" data-i18n="day.morning.quote">«Сегодня — мой день. У меня всё получается. Я могу всё.»</p>
+          <div class="auto-ctl">
+            <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="knob"></span></button>
+            <span class="auto-lbl">auto</span>
+            <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
+          </div>
+          <p class="quote-line" data-quote="morning" data-i18n="day.morning.quote">«Сегодня — мой день. У меня всё получается. Я могу всё.»</p>
         </div>
         <div class="slot">
           <div class="slot-head"><h3 data-i18n="day.day.title">День</h3><span class="slot-time" data-i18n="day.day.time">мимоходом · семя-мысль</span></div>
           <p data-i18n="day.day.desc">Выбираю одну мысль-семя на день и возвращаюсь к ней в паузах — в очереди, в транспорте, между делами.</p>
           <ul class="steps"><li data-i18n="day.day.s1">Держу одну короткую мысль: «Всё складывается в мою пользу».</li><li data-i18n="day.day.s2">Замечаю подтверждения — маленькие удачи, совпадения, помощь.</li><li data-i18n="day.day.s3">Ловлю негативную мысль — мягко разворачиваю её в позитивную.</li></ul>
-          <p class="quote-line" data-i18n="day.day.quote">«Я замечаю возможности повсюду. Мир работает на меня.»</p>
+          <div class="auto-ctl">
+            <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="knob"></span></button>
+            <span class="auto-lbl">auto</span>
+            <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
+          </div>
+          <p class="quote-line" data-quote="day" data-i18n="day.day.quote">«Я замечаю возможности повсюду. Мир работает на меня.»</p>
         </div>
         <div class="slot">
           <div class="slot-head"><h3 data-i18n="day.evening.title">Вечер</h3><span class="slot-time" data-i18n="day.evening.time">7–10 минут · перед сном</span></div>
           <p data-i18n="day.evening.desc">Засыпание — второе окно к подсознанию. То, с чем я засыпаю, ум обрабатывает всю ночь.</p>
           <ul class="steps"><li data-i18n="day.evening.s1">Вспоминаю три вещи, за которые благодарен сегодня.</li><li data-i18n="day.evening.s2">Включаю «экран ума»: вижу свою цель как уже осуществлённую — в красках, со звуком, с радостью.</li><li data-i18n="day.evening.s3">Повторяю аффирмации и засыпаю, удерживая образ и чувство.</li></ul>
-          <p class="quote-line" data-i18n="day.evening.quote">«Спасибо за этот день. Я двигаюсь к своей цели. Всё уже начинается.»</p>
+          <div class="auto-ctl">
+            <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="knob"></span></button>
+            <span class="auto-lbl">auto</span>
+            <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
+          </div>
+          <p class="quote-line" data-quote="evening" data-i18n="day.evening.quote">«Спасибо за этот день. Я двигаюсь к своей цели. Всё уже начинается.»</p>
         </div>
       </div>
     </section>
@@ -471,6 +523,12 @@
       <p class="kicker" data-i18n="aff.kicker">Мои аффирмации</p>
       <h2 data-i18n="aff.h2">Слова, которые я даю подсознанию</h2>
       <p class="section-intro" data-i18n="aff.intro">Читаю от первого лица, в настоящем времени, будто это уже так. Отмечаю прочитанные — и меняю раздел кнопками ниже.</p>
+
+      <div class="auto-ctl">
+        <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="knob"></span></button>
+        <span class="auto-lbl">auto</span>
+        <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
+      </div>
 
       <div class="save-banner" id="saveBanner">
         <div class="st"><span class="ic">💾</span><div><b data-i18n="aff.banner.title">Хотите сохранять прогресс на всех устройствах?</b><small data-i18n="aff.banner.sub">Зарегистрируйтесь бесплатно и поддержите проект — растём вместе с вами.</small></div></div>
@@ -524,7 +582,17 @@
   </main>
 
   <footer>
-    <div data-i18n="footer.copy" id="footerCopy">© {year} doxoxo.com · Практика по мотивам книги Джона Кехо «Подсознание может всё»</div>
+    <div class="footer-apps">
+      <button class="fa-btn" id="installBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span>App · iPhone</span>
+      </button>
+      <a class="fa-btn" href="https://t.me/lifelovepeace" target="_blank" rel="noopener" style="color:#229ED9">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        <span>Telegram</span>
+      </a>
+    </div>
+    <div data-i18n="footer.copy" id="footerCopy" style="margin-top:14px">© {year} doxoxo.com · Практика по мотивам книги Джона Кехо «Подсознание может всё»</div>
   </footer>
 </div>
 
@@ -611,6 +679,44 @@
   </div>
 </div>
 
+<!-- ===== инфо: ежедневная смена текстов ===== -->
+<div class="modal-back" id="infoModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="close-x" id="infoClose" type="button" aria-label="×">×</button>
+    <h3 data-i18n="auto.info.title">Ежедневная смена текстов</h3>
+    <p class="info-body" data-i18n="auto.info.body"></p>
+    <button class="btn gold" id="infoOk" type="button" data-i18n="account.close" style="width:100%; justify-content:center; padding:13px; margin-top:12px">Закрыть</button>
+  </div>
+</div>
+
+<!-- ===== установка на телефон ===== -->
+<div class="modal-back" id="installModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="close-x" id="installClose" type="button" aria-label="×">×</button>
+    <h3 data-i18n="install.title">Добавить на экран «Домой»</h3>
+    <p class="sub" data-i18n="install.intro"></p>
+    <div class="steps-block">
+      <h4 data-i18n="install.ios.h">iPhone / iPad — Safari</h4>
+      <ol class="step-list">
+        <li data-i18n="install.ios.1"></li>
+        <li data-i18n="install.ios.2"></li>
+        <li data-i18n="install.ios.3"></li>
+        <li data-i18n="install.ios.4"></li>
+      </ol>
+    </div>
+    <div class="steps-block">
+      <h4 data-i18n="install.android.h">Android — Chrome</h4>
+      <ol class="step-list">
+        <li data-i18n="install.android.1"></li>
+        <li data-i18n="install.android.2"></li>
+      </ol>
+    </div>
+    <button class="btn gold" id="installOk" type="button" data-i18n="account.close" style="width:100%; justify-content:center; padding:13px; margin-top:12px">Закрыть</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script src="config.js"></script>
 <script>
   if (window.APP_CONFIG && window.APP_CONFIG.SUPABASE_URL) {
@@ -621,6 +727,7 @@
   }
 </script>
 <script src="i18n.js"></script>
+<script src="content.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
