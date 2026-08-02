@@ -3,40 +3,150 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Условия использования — Я могу всё</title>
 <style>
-  body{margin:0;background:#F3F0F7;color:#211C2E;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
-  @media(prefers-color-scheme:dark){body{background:#100E19;color:#ECE7F5}}
-  .wrap{max-width:720px;margin:0 auto;padding:48px 22px 90px}
-  a{color:#A9791F}
-  h1{font-family:"Palatino Linotype",Georgia,serif;font-size:34px;margin:0 0 8px}
-  h2{font-size:20px;margin:32px 0 8px}
-  p,li{color:#6B6482}
-  @media(prefers-color-scheme:dark){p,li{color:#A199B8}}
-  .note{background:rgba(169,121,31,.1);border:1px solid #C79A3C;border-radius:12px;padding:14px 18px;font-size:14px}
-  .back{display:inline-block;margin-bottom:24px;text-decoration:none;font-size:14px}
+  :root{--ground:#F3F0F7;--surface:#FFF;--ink:#211C2E;--muted:#6B6482;--hair:#E4DEEE;--gold:#A9791F}
+  @media(prefers-color-scheme:dark){:root{--ground:#100E19;--surface:#1A1728;--ink:#ECE7F5;--muted:#A199B8;--hair:#2B2740;--gold:#E4AC52}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:44px 22px 100px}
+  a{color:var(--gold)}
+  .back{display:inline-block;margin-bottom:26px;text-decoration:none;font-size:14px;color:var(--muted)}
+  h1{font-family:"Palatino Linotype",Georgia,serif;font-size:clamp(30px,6vw,40px);margin:0 0 6px;letter-spacing:-.01em}
+  .updated{color:var(--muted);font-size:14px;margin:0 0 22px}
+  h2{font-size:20px;margin:34px 0 8px}
+  p,li{color:var(--muted)}
+  ul{padding-left:20px}
+  li{margin:5px 0}
+  .lead{font-size:17px}
+  .card{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:18px 22px;margin:18px 0}
+  .lang-switch{margin:0 0 30px;font-size:14px}
+  .lang-switch a{cursor:pointer;text-decoration:none;padding:4px 10px;border:1px solid var(--hair);border-radius:999px;margin-right:6px;color:var(--muted)}
+  .lang-switch a.on{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+  section[data-lang]{display:none}
+  section[data-lang].show{display:block}
+  .contact{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:16px 20px;margin-top:26px;font-size:15px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="index.html">← На главную</a>
-  <h1>Условия использования</h1>
-  <p class="note">⚠️ Это заготовка-черновик. Перед публичным запуском и приёмом платежей замените текст на реальные условия, проверенные юристом.</p>
+  <a class="back" href="index.html">← doxoxo.com</a>
 
-  <h2>1. О сервисе</h2>
-  <p>Сайт предоставляет материалы для самостоятельной практики (аффирмации, техники визуализации) по мотивам книги Джона Кехо «Подсознание может всё». Материалы носят образовательный и мотивационный характер.</p>
+  <div class="lang-switch">
+    <a data-go="ru" class="on">Русский</a><a data-go="en">English</a>
+  </div>
 
-  <h2>2. Важная оговорка</h2>
-  <p>Сервис не является медицинской, психологической или финансовой помощью и не заменяет консультацию специалиста. Результаты индивидуальны и не гарантируются.</p>
+  <!-- ============================ РУССКИЙ ============================ -->
+  <section data-lang="ru" class="show">
+    <h1>Условия использования</h1>
+    <p class="updated">Действуют с 1 августа 2026 года</p>
 
-  <h2>3. Аккаунт</h2>
-  <p>Вы отвечаете за сохранность своего пароля. Один аккаунт предназначен для одного пользователя.</p>
+    <p class="lead">Пользуясь сайтом <b>doxoxo.com</b> («Сайт»), вы соглашаетесь с этими условиями. Пожалуйста, прочитайте их.</p>
 
-  <h2>4. Поддержка проекта и платежи</h2>
-  <p>Регистрация и базовое использование бесплатны. Добровольная поддержка проекта (когда будет доступна) обрабатывается через сторонний платёжный сервис. Условия возврата будут указаны здесь до подключения оплаты.</p>
+    <div class="card">Коротко: это сайт с материалами для самостоятельной практики. Он не заменяет врача, психолога или финансового консультанта. Регистрация и базовые функции бесплатны; поддержка проекта — добровольная.</div>
 
-  <h2>5. Контакты</h2>
-  <p>По вопросам использования: <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a> (замените на реальный адрес).</p>
+    <h2>1. О сервисе</h2>
+    <p>Сайт предоставляет образовательные и мотивационные материалы для самостоятельной работы с мышлением: аффирмации, техники визуализации и ежедневную практику по мотивам книги Джона Кехо «Подсознание может всё».</p>
+
+    <h2>2. Важная оговорка (не медицинская помощь)</h2>
+    <p>Материалы Сайта носят информационный и мотивационный характер. Они <b>не являются</b> медицинской, психологической, юридической или финансовой консультацией и не заменяют обращение к квалифицированному специалисту. При проблемах со здоровьем обращайтесь к врачу. Результаты индивидуальны и не гарантируются.</p>
+
+    <h2>3. Аккаунт</h2>
+    <ul>
+      <li>Вы отвечаете за сохранность своего пароля и за действия в своём аккаунте.</li>
+      <li>Указывайте достоверный адрес электронной почты.</li>
+      <li>Один аккаунт предназначен для одного человека.</li>
+      <li>Мы можем ограничить доступ при нарушении этих условий.</li>
+    </ul>
+
+    <h2>4. Правила использования</h2>
+    <p>Запрещается использовать Сайт незаконно, пытаться взломать или нарушить его работу, получать несанкционированный доступ к данным других пользователей, а также копировать и распространять материалы Сайта в коммерческих целях без разрешения.</p>
+
+    <h2>5. Поддержка проекта и платежи</h2>
+    <ul>
+      <li>Регистрация и базовое использование — бесплатны.</li>
+      <li>Поддержка проекта добровольная и обрабатывается сторонними сервисами (Stripe, Revolut, криптоплатёж USDT). Мы не храним данные ваших карт.</li>
+      <li>Добровольные взносы, как правило, возврату не подлежат. Если произошла ошибка платежа — напишите нам, и мы разберёмся.</li>
+      <li>Отдельные функции могут открываться после поддержки проекта; условия указываются в момент оплаты.</li>
+    </ul>
+
+    <h2>6. Интеллектуальная собственность</h2>
+    <p>Оформление, тексты и код Сайта принадлежат его владельцу. Идеи и методики восходят к книге Джона Кехо и используются в образовательных целях. Товарные знаки принадлежат их владельцам.</p>
+
+    <h2>7. Ограничение ответственности</h2>
+    <p>Сайт предоставляется «как есть». Владелец не несёт ответственности за возможный ущерб, возникший в результате использования или невозможности использования Сайта, в пределах, допустимых законом.</p>
+
+    <h2>8. Изменения</h2>
+    <p>Мы можем обновлять эти условия. Актуальная версия всегда доступна на этой странице; дата вступления в силу указана сверху. Продолжая пользоваться Сайтом, вы принимаете обновлённые условия.</p>
+
+    <h2>9. Контакты</h2>
+    <p>По вопросам использования: <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a>.</p>
+
+    <div class="contact">Связанные документы: <a href="privacy.html">Политика конфиденциальности</a></div>
+  </section>
+
+  <!-- ============================ ENGLISH ============================ -->
+  <section data-lang="en">
+    <h1>Terms of Use</h1>
+    <p class="updated">Effective 1 August 2026</p>
+
+    <p class="lead">By using <b>doxoxo.com</b> (the “Site”), you agree to these terms. Please read them.</p>
+
+    <div class="card">In short: this is a site with materials for self-guided practice. It does not replace a doctor, psychologist or financial advisor. Registration and basic features are free; supporting the project is voluntary.</div>
+
+    <h2>1. About the service</h2>
+    <p>The Site provides educational and motivational materials for self-guided mindset work: affirmations, visualization techniques and a daily practice inspired by John Kehoe's book “Mind Power”.</p>
+
+    <h2>2. Important disclaimer (not medical advice)</h2>
+    <p>The Site's materials are informational and motivational. They are <b>not</b> medical, psychological, legal or financial advice and do not replace a qualified professional. For health concerns, consult a doctor. Results are individual and not guaranteed.</p>
+
+    <h2>3. Your account</h2>
+    <ul>
+      <li>You are responsible for keeping your password safe and for activity in your account.</li>
+      <li>Provide a valid email address.</li>
+      <li>One account is intended for one person.</li>
+      <li>We may restrict access if these terms are violated.</li>
+    </ul>
+
+    <h2>4. Acceptable use</h2>
+    <p>You may not use the Site unlawfully, attempt to hack or disrupt it, gain unauthorized access to other users' data, or copy and distribute the Site's materials commercially without permission.</p>
+
+    <h2>5. Supporting the project and payments</h2>
+    <ul>
+      <li>Registration and basic use are free.</li>
+      <li>Supporting the project is voluntary and processed by third parties (Stripe, Revolut, USDT crypto). We do not store your card details.</li>
+      <li>Voluntary contributions are generally non-refundable. If a payment error occurs, contact us and we'll help.</li>
+      <li>Certain features may unlock after supporting the project; terms are shown at the time of payment.</li>
+    </ul>
+
+    <h2>6. Intellectual property</h2>
+    <p>The Site's design, texts and code belong to its owner. The ideas and methods trace back to John Kehoe's book and are used for educational purposes. Trademarks belong to their respective owners.</p>
+
+    <h2>7. Limitation of liability</h2>
+    <p>The Site is provided “as is”. To the extent permitted by law, the owner is not liable for any damage arising from the use of, or inability to use, the Site.</p>
+
+    <h2>8. Changes</h2>
+    <p>We may update these terms. The current version is always available on this page, with the effective date at the top. By continuing to use the Site, you accept the updated terms.</p>
+
+    <h2>9. Contact</h2>
+    <p>For questions about use: <a href="mailto:hello@doxoxo.com">hello@doxoxo.com</a>.</p>
+
+    <div class="contact">Related: <a href="privacy.html">Privacy Policy</a></div>
+  </section>
 </div>
+
+<script>
+  document.querySelectorAll(".lang-switch a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var go = a.getAttribute("data-go");
+      document.querySelectorAll(".lang-switch a").forEach(function (x) { x.classList.toggle("on", x === a); });
+      document.querySelectorAll("section[data-lang]").forEach(function (s) {
+        s.classList.toggle("show", s.getAttribute("data-lang") === go);
+      });
+      document.documentElement.lang = go;
+    });
+  });
+</script>
 </body>
 </html>

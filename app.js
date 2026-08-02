@@ -562,6 +562,64 @@
   $("installClose").addEventListener("click", function () { closeModal($("installModal")); });
   $("installOk").addEventListener("click", function () { closeModal($("installModal")); });
 
+  /* ---------------- Личный ассистент (скоро) ---------------- */
+  $("miAssistant").addEventListener("click", function () { openModal($("assistantModal")); });
+  $("assistantClose").addEventListener("click", function () { closeModal($("assistantModal")); });
+  $("assistantOk").addEventListener("click", function () { closeModal($("assistantModal")); });
+
+  /* ---------------- Дыхательная практика (орб) ---------------- */
+  (function () {
+    var breath = $("breath"), canvas = $("breathRing"), orbState = $("orbState");
+    if (!breath || !canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var DPR = window.devicePixelRatio || 1, SIZE = 210, CX = 105, CY = 105, R = 86;
+    canvas.style.width = SIZE + "px"; canvas.style.height = SIZE + "px";
+    canvas.width = SIZE * DPR; canvas.height = SIZE * DPR; ctx.scale(DPR, DPR);
+    var cyan = ctx.createLinearGradient(0, 0, SIZE, SIZE);
+    cyan.addColorStop(0, "#7dd3fc"); cyan.addColorStop(0.5, "#38bdf8"); cyan.addColorStop(1, "#0ea5e9");
+    var INHALE = 4000, EXHALE = 8;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    var state = "idle", t0 = 0, raf = null;
+    function now() { return (window.performance && performance.now) ? performance.now() : Date.now(); }
+    function clearRing() { ctx.clearRect(0, 0, SIZE, SIZE); }
+    function arc(frac, style, glow, lw) {
+      if (frac <= 0) return;
+      ctx.lineCap = "round"; ctx.lineWidth = lw; ctx.strokeStyle = style;
+      ctx.shadowColor = (typeof style === "string" ? style : "#38bdf8"); ctx.shadowBlur = glow;
+      var s = -Math.PI / 2;
+      ctx.beginPath(); ctx.arc(CX, CY, R, s, s + Math.min(frac, 1) * Math.PI * 2); ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
+    function setState(txt, size, ls) { orbState.textContent = txt; orbState.style.fontSize = size; orbState.style.letterSpacing = ls || "0"; }
+    function stop() { breath.classList.remove("active"); clearRing(); if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    function loop() {
+      var tn = now(), el = tn - t0; clearRing();
+      if (state === "inhale") {
+        var p = Math.min(1, el / INHALE);
+        arc(p, cyan, 16, 11);
+        setState(t("breath.inhale"), "15px", ".03em");
+        if (p >= 1) { state = "hold"; t0 = tn; }
+      } else if (state === "hold") {
+        var g = reduce ? 18 : 16 + Math.sin(tn / 260) * 10;
+        var lw = reduce ? 11 : 11 + Math.sin(tn / 260) * 2;
+        arc(1, cyan, g, lw);
+        setState(t("breath.hold"), "14px", ".02em");
+      } else if (state === "exhale") {
+        var remain = EXHALE - el / 1000;
+        if (remain <= 0) { state = "idle"; setState("", "15px"); stop(); return; }
+        arc(remain / EXHALE, "#9aa3b2", 6, 9);
+        setState(String(Math.ceil(remain)), "30px", "0");
+      } else { stop(); return; }
+      raf = requestAnimationFrame(loop);
+    }
+    function startInhale() { state = "inhale"; t0 = now(); breath.classList.add("active"); if (!raf) raf = requestAnimationFrame(loop); }
+    function startExhale() { if (state !== "inhale" && state !== "hold") return; state = "exhale"; t0 = now(); if (!raf) raf = requestAnimationFrame(loop); }
+    breath.addEventListener("pointerdown", function (e) { e.preventDefault(); startInhale(); });
+    breath.addEventListener("pointerup", startExhale);
+    breath.addEventListener("pointerleave", startExhale);
+    breath.addEventListener("pointercancel", startExhale);
+  })();
+
   /* ---------------- СТАРТ ---------------- */
   state = loadLocal();
   ensureToday();

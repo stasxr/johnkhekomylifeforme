@@ -399,6 +399,24 @@
   .step-list li{margin:6px 0}
   .modal .info-body{color:var(--muted); font-size:15px; line-height:1.6; text-align:left; margin:0 0 8px}
 
+  /* assistant «скоро» */
+  .soon-badge{display:inline-block; font-size:10px; font-weight:800; letter-spacing:.18em; color:#fff; background:linear-gradient(180deg,var(--gold-soft),var(--gold)); padding:3px 10px; border-radius:999px}
+  :root[data-theme="dark"] .soon-badge{color:#100E19}
+  @media (prefers-color-scheme:dark){.soon-badge{color:#100E19}}
+  .assistant-list{list-style:none; margin:20px 0 6px; padding:0; display:grid; gap:13px}
+  .assistant-list li{display:flex; gap:12px; align-items:flex-start; font-size:14.5px; color:var(--muted); line-height:1.5}
+  .assistant-list li span:first-child{font-size:18px; flex:none; line-height:1.3}
+
+  /* дыхательная практика (орб) */
+  .breath{position:relative; width:132px; height:132px; display:grid; place-items:center; touch-action:none; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none}
+  .breath-ring{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:210px; height:210px; pointer-events:none}
+  .breath .orb{margin:0}
+  .breath-hint{margin-top:16px; font-size:12.5px; color:var(--muted); text-align:center; max-width:26ch; margin-left:auto; margin-right:auto; min-height:18px; transition:opacity .3s}
+  .orb-state{position:absolute; inset:0; display:none; align-items:center; justify-content:center; color:#fff; font-family:var(--sans); font-weight:700; font-variant-numeric:tabular-nums; text-shadow:0 1px 6px rgba(0,0,0,.35)}
+  .breath.active .orb-amb{opacity:0 !important; animation:none !important}
+  .breath.active .orb-state{display:flex}
+  .breath.active .orb{animation-play-state:paused}
+
   @media (max-width:620px){
     .tech{grid-template-columns:1fr}
     .principle{grid-template-columns:1fr; gap:10px}
@@ -450,6 +468,7 @@
         </button>
         <div class="dd-menu" id="profileMenu" role="menu">
           <button class="dd-item" id="miAccount" role="menuitem"><span>👤</span><span data-i18n="menu.account">Личный кабинет</span><span class="dot" id="miAccountDot" style="display:none"></span></button>
+          <button class="dd-item" id="miAssistant" role="menuitem"><span>🤖</span><span data-i18n="menu.assistant">Личный ассистент</span></button>
           <button class="dd-item" id="miSupport" role="menuitem"><span>🙏</span><span data-i18n="support.btn">Поддержать проект</span></button>
           <button class="dd-item" id="miIdea" role="menuitem"><span>💡</span><span data-i18n="menu.idea">Предложить идею</span></button>
           <div class="dd-sep"></div>
@@ -464,7 +483,13 @@
   </div>
 
   <header class="hero wrap">
-    <div class="orb-wrap"><div class="orb"><span data-i18n="hero.breath">вдох · выдох</span></div></div>
+    <div class="orb-wrap">
+      <div class="breath" id="breath">
+        <canvas class="breath-ring" id="breathRing"></canvas>
+        <div class="orb"><span class="orb-amb" id="orbAmb" data-i18n="hero.breath">вдох · выдох</span><span class="orb-state" id="orbState"></span></div>
+      </div>
+    </div>
+    <p class="breath-hint" id="breathHint" data-i18n="breath.hint"></p>
     <p class="eyebrow" data-i18n="hero.eyebrow">Практика по книге Джона Кехо</p>
     <h1 data-i18n="hero.title">Я могу <em>всё</em></h1>
     <p class="lede" data-i18n="hero.lede">Моё подсознание работает на меня — днём и ночью, без остановки.</p>
@@ -719,6 +744,26 @@
       </ol>
     </div>
     <button class="btn gold" id="installOk" type="button" data-i18n="account.close" style="width:100%; justify-content:center; padding:13px; margin-top:12px">Закрыть</button>
+  </div>
+</div>
+
+<!-- ===== личный ассистент (скоро) ===== -->
+<div class="modal-back" id="assistantModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="close-x" id="assistantClose" type="button" aria-label="×">×</button>
+    <div style="text-align:center">
+      <div style="font-size:44px; line-height:1; margin-bottom:8px">🤖</div>
+      <span class="soon-badge">SOON</span>
+      <h3 style="margin-top:10px" data-i18n="assistant.soon.title">Личный ассистент</h3>
+      <p class="sub" data-i18n="assistant.soon.text"></p>
+    </div>
+    <ul class="assistant-list">
+      <li><span>⏰</span><span data-i18n="assistant.b1"></span></li>
+      <li><span>🌐</span><span data-i18n="assistant.b2"></span></li>
+      <li><span>🙋</span><span data-i18n="assistant.b3"></span></li>
+      <li><span>✨</span><span data-i18n="assistant.b4"></span></li>
+    </ul>
+    <button class="btn gold" id="assistantOk" type="button" data-i18n="account.close" style="width:100%; justify-content:center; padding:13px; margin-top:8px">Закрыть</button>
   </div>
 </div>
 
