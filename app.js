@@ -552,8 +552,13 @@
     state.auto = !state.auto; persist();
     updateAutoUI(); refreshQuotes(); renderList();
   }
-  document.querySelectorAll("[data-auto]").forEach(function (b) { b.addEventListener("click", onAutoClick); });
-  document.querySelectorAll("[data-autoinfo]").forEach(function (b) { b.addEventListener("click", function () { openModal($("infoModal")); }); });
+  document.addEventListener("click", function (e) {
+    var el = e.target;
+    var infoBtn = el.closest ? el.closest("[data-autoinfo]") : null;
+    if (infoBtn) { e.preventDefault(); e.stopPropagation(); openModal($("infoModal")); return; }
+    var autoBtn = el.closest ? el.closest("[data-auto]") : null;
+    if (autoBtn) { e.preventDefault(); e.stopPropagation(); onAutoClick(); }
+  });
   $("infoClose").addEventListener("click", function () { closeModal($("infoModal")); });
   $("infoOk").addEventListener("click", function () { closeModal($("infoModal")); });
 

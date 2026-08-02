@@ -213,8 +213,9 @@
   .steps{margin:0; padding:0; list-style:none; display:grid; gap:9px}
   .steps li{position:relative; padding-left:26px; font-size:15.5px}
   .steps li::before{content:""; position:absolute; left:2px; top:9px; width:8px; height:8px; border-radius:50%; background:var(--violet-soft)}
-  .quote-line{margin-top:14px; display:flow-root; font-family:var(--serif); font-style:italic; font-size:17px; line-height:1.5; color:var(--ink); padding:14px 16px; background:var(--surface-2); border-radius:10px; border:1px solid var(--hair)}
-  .quote-line .auto-ctl{float:right; margin:5px 0 8px 16px; font-style:normal}
+  .quote-line{margin-top:14px; font-family:var(--serif); font-style:italic; font-size:17px; line-height:1.55; color:var(--ink); padding:14px 16px; background:var(--surface-2); border-radius:10px; border:1px solid var(--hair)}
+  .quote-line .q-text{display:block}
+  .quote-line .auto-ctl{display:flex; justify-content:flex-end; align-items:center; gap:7px; margin-top:12px; font-style:normal}
   .quote-line .auto-tgl{width:56px; height:26px}
   .quote-line .auto-tgl .knob{width:20px; height:20px}
   .quote-line .auto-tgl[aria-checked="true"] .knob{transform:translateX(30px)}
@@ -385,6 +386,7 @@
   .q-text{flex:1; min-width:0}
   .auto-info{background:none; border:1px solid var(--hair); cursor:pointer; color:var(--violet); font-size:12px; font-weight:700; width:20px; height:20px; border-radius:50%; display:inline-grid; place-items:center; padding:0; font-family:Georgia,serif}
   .auto-info:hover{color:var(--gold); border-color:var(--gold-soft)}
+  .aff-auto{display:flex; justify-content:flex-end; align-items:center; margin:-6px 2px 16px}
 
   /* toast */
   .toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:var(--ground); padding:12px 20px; border-radius:12px; font-size:14px; box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:all .25s; z-index:80; max-width:90vw; text-align:center}
@@ -523,11 +525,11 @@
           <p data-i18n="day.morning.desc">Первые минуты после сна — ум ещё в полудрёме, граница с подсознанием открыта. Не хватаюсь за телефон.</p>
           <ul class="steps"><li data-i18n="day.morning.s1">Лежу с закрытыми глазами, делаю три медленных вдоха.</li><li data-i18n="day.morning.s2">Проговариваю про себя аффирмации дня — спокойно, с чувством.</li><li data-i18n="day.morning.s3">Представляю сегодняшний день таким, каким хочу: лёгким, удачным, своим.</li></ul>
           <p class="quote-line">
+            <span class="q-text" data-quote="morning" data-i18n="day.morning.quote">«Сегодня — мой день. У меня всё получается. Я могу всё.»</span>
             <span class="auto-ctl">
               <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="auto-txt">auto</span><span class="knob"></span></button>
               <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
             </span>
-            <span class="q-text" data-quote="morning" data-i18n="day.morning.quote">«Сегодня — мой день. У меня всё получается. Я могу всё.»</span>
           </p>
         </div>
         <div class="slot">
@@ -535,11 +537,11 @@
           <p data-i18n="day.day.desc">Выбираю одну мысль-семя на день и возвращаюсь к ней в паузах — в очереди, в транспорте, между делами.</p>
           <ul class="steps"><li data-i18n="day.day.s1">Держу одну короткую мысль: «Всё складывается в мою пользу».</li><li data-i18n="day.day.s2">Замечаю подтверждения — маленькие удачи, совпадения, помощь.</li><li data-i18n="day.day.s3">Ловлю негативную мысль — мягко разворачиваю её в позитивную.</li></ul>
           <p class="quote-line">
+            <span class="q-text" data-quote="day" data-i18n="day.day.quote">«Я замечаю возможности повсюду. Мир работает на меня.»</span>
             <span class="auto-ctl">
               <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="auto-txt">auto</span><span class="knob"></span></button>
               <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
             </span>
-            <span class="q-text" data-quote="day" data-i18n="day.day.quote">«Я замечаю возможности повсюду. Мир работает на меня.»</span>
           </p>
         </div>
         <div class="slot">
@@ -547,11 +549,11 @@
           <p data-i18n="day.evening.desc">Засыпание — второе окно к подсознанию. То, с чем я засыпаю, ум обрабатывает всю ночь.</p>
           <ul class="steps"><li data-i18n="day.evening.s1">Вспоминаю три вещи, за которые благодарен сегодня.</li><li data-i18n="day.evening.s2">Включаю «экран ума»: вижу свою цель как уже осуществлённую — в красках, со звуком, с радостью.</li><li data-i18n="day.evening.s3">Повторяю аффирмации и засыпаю, удерживая образ и чувство.</li></ul>
           <p class="quote-line">
+            <span class="q-text" data-quote="evening" data-i18n="day.evening.quote">«Спасибо за этот день. Я двигаюсь к своей цели. Всё уже начинается.»</span>
             <span class="auto-ctl">
               <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="auto-txt">auto</span><span class="knob"></span></button>
               <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
             </span>
-            <span class="q-text" data-quote="evening" data-i18n="day.evening.quote">«Спасибо за этот день. Я двигаюсь к своей цели. Всё уже начинается.»</span>
           </p>
         </div>
       </div>
@@ -571,13 +573,15 @@
         <div class="bar"><i id="barFill"></i></div>
         <span id="progTxt">0 / 0</span>
         <span class="cloud-tag" id="cloudTag" data-i18n="aff.cloud">☁</span>
+      </div>
+
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="aff-auto">
         <span class="auto-ctl">
           <button class="auto-tgl" data-auto role="switch" aria-checked="false" aria-label="auto" type="button"><span class="auto-txt">auto</span><span class="knob"></span></button>
           <button class="auto-info" data-autoinfo type="button" aria-label="info">i</button>
         </span>
       </div>
-
-      <div class="tabs" id="tabs" role="tablist"></div>
       <div class="aff-list" id="affList"></div>
       <button class="reset" id="resetBtn" type="button" data-i18n="aff.reset">Сбросить отметки</button>
     </section>
@@ -773,7 +777,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="config.js?v=8"></script>
+<script src="config.js?v=9"></script>
 <script>
   if (window.APP_CONFIG && window.APP_CONFIG.SUPABASE_URL) {
     var s = document.createElement('script');
@@ -782,8 +786,8 @@
     document.head.appendChild(s);
   }
 </script>
-<script src="i18n.js?v=8"></script>
-<script src="content.js?v=8"></script>
-<script src="app.js?v=8"></script>
+<script src="i18n.js?v=9"></script>
+<script src="content.js?v=9"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
