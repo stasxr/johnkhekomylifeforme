@@ -109,6 +109,7 @@
   }
   .brand{font-family:var(--serif); font-weight:600; font-size:17px; letter-spacing:-.01em; color:var(--ink); text-decoration:none; white-space:nowrap}
   .topbar-actions{display:flex; align-items:center; gap:8px}
+  .ta-left, .ta-right{display:flex; align-items:center; gap:8px}
   .btn{
     appearance:none; cursor:pointer; font-family:var(--sans); font-size:13.5px;
     border:1px solid var(--hair); background:var(--surface); color:var(--ink);
@@ -430,6 +431,7 @@
     body{font-size:16px}
     .brand{display:none}
     .bot-strip{border-radius:14px}
+    .topbar-actions{flex:1; justify-content:space-between}
   }
   @media (prefers-reduced-motion:reduce){
     .orb,.orb::after,.orb span,.level-badge .spark,.level-badge .num,.levelup .lu-spark,.levelup .lu-num,.lu-confetti i{animation:none}
@@ -445,6 +447,7 @@
     <a href="#" class="brand" data-i18n="brand">Я могу всё</a>
     <div class="topbar-actions">
 
+      <div class="ta-left">
       <!-- language -->
       <div class="dd">
         <button class="btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
@@ -455,7 +458,9 @@
 
       <!-- theme -->
       <button class="btn icon" id="tgl" type="button" aria-label="Theme"><span id="tglIco">◐</span></button>
+      </div>
 
+      <div class="ta-right">
       <!-- guest -->
       <button class="btn" id="loginBtn" type="button" data-i18n="ui.login">Войти</button>
       <button class="btn primary" id="registerBtn" type="button" data-i18n="ui.register">Регистрация</button>
@@ -483,6 +488,7 @@
           <div class="dd-sep"></div>
           <button class="dd-item danger" id="miLogout" role="menuitem"><span>⎋</span><span data-i18n="ui.logout">Выйти</span></button>
         </div>
+      </div>
       </div>
 
     </div>
